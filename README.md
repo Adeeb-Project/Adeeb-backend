@@ -33,8 +33,8 @@ Before you begin, make sure you have the following installed on your system:
 ### Step 1: Clone the Repository
 Clone this repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/your-repository-name.git
-cd your-repository-name
+git clone https://github.com/Adeeb-Project/Adeeb-backend.git
+cd Adeeb-backend
 ```
 
 ### Step 2: Set Up Docker
@@ -92,7 +92,10 @@ The application will run on `http://localhost:5000` by default (or `https://loca
 
 Please create new branch for this repository, make your changes, and submit a pull request.
 
-USE (NAME/TASK)
+
+## USE (NAME/TASK) like Saud/Adding-new-btn-for-login
+
+## AND DO MIGRATIONS !! Ask chatgpt about how to do it 
 
 ---
 
