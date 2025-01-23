@@ -1,0 +1,85 @@
+# Ignore build output
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.vspscc
+*.vssscc
+
+# Visual Studio working files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs and database
+*.log
+*.ldf
+*.mdf
+
+# Temporary files
+*.tmp
+*.temp
+*.TMP
+*.cache
+*.pch
+
+# Transient files
+*.csproj.user
+*.rsuser
+*.rslog
+*.sln.docstates
+
+# Configuration files
+appsettings*.json
+secrets.json
+
+# IDE and editor configurations
+.idea/
+.vscode/
+*.code-workspace
+
+# Dependency directories
+node_modules/
+wwwroot/lib/
+
+# ASP.NET runtime
+*.pidb
+*.stackdump
+
+# JetBrains Rider files
+.idea/
+
+# Resharper
+_ReSharper*/
+
+# Azure Deployment
+.publish/
+
+# NuGet Packages
+*.nupkg
+packages/
+.nuget/
+
+# Entity Framework Migrations
+Migrations/
+
+# Docker files
+docker-compose.override.yml
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Others
+*.bak
+*.orig
+*.rej
+*.class
+*.jar
+*.war
+*.swp

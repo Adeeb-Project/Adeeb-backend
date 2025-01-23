@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqladeeb
+    environment:
+      MYSQL_ROOT_PASSWORD: keepitsecret
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysqladeeb
+      PMA_USER: root
+      PMA_PASSWORD: keepitsecret
+    ports:
+      - "8080:80"
