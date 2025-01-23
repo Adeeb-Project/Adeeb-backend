@@ -1,7 +1,5 @@
 
-### `README.md`
 
-```markdown
 # ADEEB
 
 Welcome to the adeeb repository! This guide will help you set up and run the project using Docker and .NET.
