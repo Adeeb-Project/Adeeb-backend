@@ -34,7 +34,7 @@ out/
 *.sln.docstates
 
 # Configuration files
-appsettings*.json
+#appsettings*.json
 secrets.json
 
 # IDE and editor configurations
