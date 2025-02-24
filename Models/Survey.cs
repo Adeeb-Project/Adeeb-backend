@@ -8,7 +8,8 @@ namespace adeeb.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? ExpiryDate { get; set; }
 
-        // Navigation Property to SurveyResponses
-        public ICollection<SurveyResponse> SurveyResponses { get; set; }
+        // Navigation Property to Questions
+        public ICollection<Question> Questions { get; set; }
     }
+
 }
