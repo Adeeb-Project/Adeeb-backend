@@ -11,7 +11,8 @@ namespace adeeb.Data
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<SurveyResponse> SurveyResponses { get; set; }
         public DbSet<EmployeeSurveyLink> EmployeeSurveyLinks { get; set; }
-        public DbSet<Employee> Employees { get; set; } 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public new DbSet<User> Users { get; set; }
+        public DbSet<Question> Questions { get; set; }
     }
 }
