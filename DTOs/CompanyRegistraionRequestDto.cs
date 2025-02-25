@@ -8,8 +8,10 @@ using System.Text.Json.Serialization;
 public class CompanyRegistrationRequestDto
 {
     [Required]
+    [StringLength(maximumLength: 30, MinimumLength = 1)]
     public string Name { get; set; }
     [Required]
+    [MinLength(30)]
     public int TotalNumberOfEmployees { get; set; }
     [Required]
     [JsonConverter(typeof(JsonStringEnumConverter))]
