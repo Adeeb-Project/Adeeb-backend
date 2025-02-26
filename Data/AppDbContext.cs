@@ -8,6 +8,7 @@ namespace adeeb.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<Company> Companies { get; set; }
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<SurveyResponse> SurveyResponses { get; set; }
         public DbSet<EmployeeSurveyLink> EmployeeSurveyLinks { get; set; }

@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using adeeb.Data;
+using adeeb.Models;
 using AdeebBackend.Data;
+using AdeebBackend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,10 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+
+builder.Services.Configure<AwsSettings>(builder.Configuration.GetSection("AWS"));
+builder.Services.AddTransient<S3Service>();
 
 
 var app = builder.Build();

@@ -9,6 +9,12 @@ namespace adeeb.Models
         public string Department { get; set; }
         public string Position { get; set; }
 
+        // Foreign key to Company
+        public int CompanyId { get; set; }
+
+        // Navigation property
+        public Company Company { get; set; }
+
         // Navigation Property to SurveyResponse
         public ICollection<SurveyResponse> SurveyResponses { get; set; }
     }
