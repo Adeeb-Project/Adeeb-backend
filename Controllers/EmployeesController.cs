@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using adeeb.Models;
-using adeeb.Data; //ya shbab its AppDbContext not ApplicationDbContext
+using adeeb.Data; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
