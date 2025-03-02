@@ -42,6 +42,7 @@ namespace AdeebBackend.Controllers
 
         // POST: api/surveys/assign
         [HttpPost("assign")]
+        [Authorize]
         public async Task<ActionResult> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto)
         {
             //just checking first before anything if the surveyId and employeeId actuaclly exist
