@@ -22,7 +22,7 @@ namespace AdeebBackend.Controllers
             _jwtService = jwtService;
         }
 
-        // POST: api/company
+        // POST: api/companies
         [HttpPost("register")]
         public async Task<ActionResult<Company>> RegisterCompany(CompanyRegistrationRequestDto companyRequest)
         {
