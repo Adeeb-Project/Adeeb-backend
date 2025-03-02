@@ -1,6 +1,7 @@
 using adeeb.Data;
 using adeeb.Models;
 using AdeebBackend.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ namespace AdeebBackend.Controllers
 
         // GET: api/surveys
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Survey>>> GetSurveys()
         {
             var surveys = await _context.Surveys.Include(e => e.Questions).Select(s => new SurveyDto

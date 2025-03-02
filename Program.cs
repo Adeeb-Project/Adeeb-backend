@@ -1,9 +1,14 @@
+using System.Text;
 using System.Text.Json.Serialization;
 using adeeb.Data;
 using adeeb.Models;
 using AdeebBackend.Data;
 using AdeebBackend.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +39,26 @@ builder.Services.AddCors(options =>
 builder.Services.Configure<AwsSettings>(builder.Configuration.GetSection("AWS"));
 builder.Services.AddTransient<S3Service>();
 
+//using JWT
+var secretKey = builder.Configuration["JwtSettings:Secret"];
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = "yourdomain.com",
+            ValidAudience = "yourdomain.com"
+        };
+    });
+
+builder.Services.AddScoped<JwtService>();
+
 
 var app = builder.Build();
 
@@ -56,6 +81,7 @@ using (var scope = app.Services.CreateScope())
     DummyDbInitializer.Seed(context);
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

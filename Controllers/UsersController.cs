@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using adeeb.Models;
-using adeeb.Data; 
+using adeeb.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdeebBackend.Services;
 
 namespace adeeb.Controllers
 {
@@ -13,10 +14,12 @@ namespace adeeb.Controllers
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly JwtService _jwtService;
 
-        public UsersController(AppDbContext context)
+        public UsersController(AppDbContext context, JwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
         }
 
         // POST: api/users/register
@@ -76,7 +79,14 @@ namespace adeeb.Controllers
                 return Unauthorized("Invalid password.");
             }
 
-            return Ok(user);
+            var token = _jwtService.GenerateToken(user.UserId, user.CompanyId);
+
+            return Ok(new
+            {
+                UserId = user.UserId,
+                CompanyId = user.CompanyId,
+                Token = token
+            });
         }
 
     }

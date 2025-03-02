@@ -11,7 +11,7 @@ public class CompanyRegistrationRequestDto
     [StringLength(maximumLength: 30, MinimumLength = 1)]
     public string Name { get; set; }
     [Required]
-    [MinLength(30)]
+    [Range(30, int.MaxValue)]
     public int TotalNumberOfEmployees { get; set; }
     [Required]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -20,4 +20,15 @@ public class CompanyRegistrationRequestDto
     // This property will hold the uploaded image file
     [Required]
     public IFormFile LogoImage { get; set; }
+
+    //these are for user registration
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+    [Required]
+    [StringLength(maximumLength: 30, MinimumLength = 8)]
+    public string Password { get; set; }
+    [Required]
+    [MinLength(4)]
+    public string NameOfUser { get; set; }
 }
