@@ -11,11 +11,13 @@ public static class ServiceResultExtensions
         return result.Type switch
         {
             ResultType.Success => new OkObjectResult(result.Data),
+            ResultType.Created => new CreatedResult("Successfully Created", result.Data),
             ResultType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
             ResultType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
             ResultType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
             ResultType.Forbidden => new ObjectResult(result.ErrorMessage) { StatusCode = StatusCodes.Status403Forbidden },
             ResultType.Conflict => new ConflictObjectResult(result.ErrorMessage),
+
             _ => new ObjectResult("An unexpected error occurred.") { StatusCode = 500 }
         };
     }

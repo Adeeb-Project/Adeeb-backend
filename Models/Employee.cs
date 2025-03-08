@@ -8,6 +8,7 @@ namespace adeeb.Models
         public DateTime JoinDate { get; set; }
         public string Department { get; set; }
         public string Position { get; set; }
+        public string PhoneNumber { get; set; }
 
         // Foreign key to Company
         public int CompanyId { get; set; }

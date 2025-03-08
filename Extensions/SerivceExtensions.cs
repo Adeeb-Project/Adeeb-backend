@@ -19,11 +19,15 @@ public static class ServiceExtensions
 
         services.Configure<AwsSettings>(configuration.GetSection("AWS"));
 
+        services.AddHttpClient();
+
         services.AddTransient<S3Service>();
 
         services.AddScoped<JwtService>();
 
         //custom services add here guys:
+        services.AddScoped<TwilioEmailService>();
+        services.AddScoped<SurveysService>();
 
         return services;
     }

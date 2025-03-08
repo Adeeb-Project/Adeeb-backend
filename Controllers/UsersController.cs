@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdeebBackend.Services;
+using AdeebBackend.DTOs;
 
 namespace adeeb.Controllers
 {
@@ -24,7 +25,7 @@ namespace adeeb.Controllers
 
         // POST: api/users/register
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(User user)
+        public async Task<ActionResult<User>> Register(RegisterNewUserForCompanyDto user)
         {
             if (string.IsNullOrWhiteSpace(user.Name) ||
                 string.IsNullOrWhiteSpace(user.Email) ||
@@ -41,10 +42,25 @@ namespace adeeb.Controllers
 
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            _context.Users.Add(user);
+            var company = await _context.Companies.FindAsync(user.CompanyId);
+            if (company == null)
+            {
+                return BadRequest("Invalid CompanyId. Company does not exist.");
+            }
+
+            var userToAdd = new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                CompanyId = user.CompanyId,
+
+            };
+
+            _context.Users.Add(userToAdd);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.UserId }, user);
+            return Ok();
         }
         // GET: api/users/{id}
         [HttpGet("{id}")]

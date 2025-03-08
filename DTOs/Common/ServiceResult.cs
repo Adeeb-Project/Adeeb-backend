@@ -12,6 +12,7 @@ public class ServiceResult<T>
 
     // Static Helpers (Factory Methods) to create results easily
     public static ServiceResult<T> Ok(T data) => new() { Type = ResultType.Success, Data = data };
+    public static ServiceResult<T> Created() => new() { Type = ResultType.Created };
     public static ServiceResult<T> NotFound(string message) => new() { Type = ResultType.NotFound, ErrorMessage = message };
     public static ServiceResult<T> BadRequest(string message) => new() { Type = ResultType.BadRequest, ErrorMessage = message };
     public static ServiceResult<T> Unauthorized(string message) => new() { Type = ResultType.Unauthorized, ErrorMessage = message };
