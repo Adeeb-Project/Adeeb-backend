@@ -20,6 +20,7 @@ public class Company
     public ICollection<Employee> Employees { get; set; }
     // Navigation Property to User
     public ICollection<User> Users { get; set; }
+    public ICollection<Survey> Surveys { get; set; }
 
 }
 

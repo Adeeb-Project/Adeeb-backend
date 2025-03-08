@@ -12,25 +12,25 @@ namespace AdeebBackend.Data
             // Ensure the database is created
             context.Database.EnsureCreated();
 
-            // Check if data already exists to avoid duplicate seeding
+            // Check if the database is already seeded
             if (context.Employees.Any())
             {
-                return; // DB has been seeded
+                return; // Database already seeded
             }
 
-            // Create a dummy company first
+            // Create a dummy company
             var company = new Company
             {
                 Id = 1, // Set explicitly if needed; otherwise, let EF generate the Id
                 Name = "Test Company",
                 LogoUrl = "http://example.com/logo.png",
-                TotalNumberOfEmployees = 2,
+                TotalNumberOfEmployees = 3, // Updated count
                 BundleType = BundleType.Basic
             };
             context.Companies.Add(company);
             context.SaveChanges();
 
-            // Now create dummy employees that reference the company
+            // Create dummy employees
             var employees = new Employee[]
             {
                 new Employee
@@ -41,7 +41,8 @@ namespace AdeebBackend.Data
                     Email = "john.doe@example.com",
                     JoinDate = new DateTime(2020, 1, 1),
                     Department = "Sales",
-                    Position = "Sales Executive"
+                    Position = "Sales Executive",
+                    PhoneNumber = "+966500000001"
                 },
                 new Employee
                 {
@@ -51,9 +52,22 @@ namespace AdeebBackend.Data
                     Email = "jane.smith@example.com",
                     JoinDate = new DateTime(2019, 5, 15),
                     Department = "Marketing",
-                    Position = "Marketing Manager"
+                    Position = "Marketing Manager",
+                    PhoneNumber = "+966500000002"
+                },
+                new Employee
+                {
+                    Id = 3,  // 🔥 New employee added
+                    CompanyId = company.Id,
+                    FullName = "Mohammad Makki",
+                    Email = "mmmakki9@gmail.com",
+                    JoinDate = DateTime.UtcNow, // Assume today is the join date
+                    Department = "Engineering",
+                    Position = "Software Engineer",
+                    PhoneNumber = "+966554337339"
                 }
             };
+
             context.Employees.AddRange(employees);
             context.SaveChanges();
 
@@ -63,6 +77,7 @@ namespace AdeebBackend.Data
                 new Survey
                 {
                     Id = 1,
+                    CompanyId = company.Id,
                     Title = "Employee Satisfaction Survey",
                     Description = "We want to know your opinions",
                     CreatedAt = DateTime.UtcNow,
@@ -113,8 +128,18 @@ namespace AdeebBackend.Data
                     UniqueLink = "http://localhost:3000/survey/2",
                     SentAt = DateTime.UtcNow,
                     IsCompleted = false
+                },
+                new EmployeeSurveyLink
+                {
+                    Id = 3,  // 🔥 Assign survey to Mohammad Makki
+                    EmployeeId = 3,
+                    SurveyId = 1,
+                    UniqueLink = "http://localhost:3000/survey/3",
+                    SentAt = DateTime.UtcNow,
+                    IsCompleted = false
                 }
             };
+
             context.EmployeeSurveyLinks.AddRange(employeeSurveyLinks);
             context.SaveChanges();
         }

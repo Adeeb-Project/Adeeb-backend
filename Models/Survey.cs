@@ -7,9 +7,11 @@ namespace adeeb.Models
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ExpiryDate { get; set; }
+        public int CompanyId { get; set; }
 
         // Navigation Property to Questions
         public ICollection<Question> Questions { get; set; }
+        public Company Company { get; set; }
     }
 
 }
