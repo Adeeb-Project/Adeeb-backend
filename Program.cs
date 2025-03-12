@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Register all services
-builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddApplicationServices(builder.Configuration, args);
 builder.Services.AddControllersWithCustomJson();
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddCorsPolicy(builder.Configuration);
@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerDocumentation();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 
 app.UseAuthentication();
@@ -30,4 +30,4 @@ app.MapControllers();
 // Seed data (optional)
 app.SeedDatabase();
 
-app.Run();
+app.Run("http://0.0.0.0:8080");
