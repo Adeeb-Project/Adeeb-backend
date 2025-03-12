@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdeebBackend.Services;
 using AdeebBackend.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace adeeb.Controllers
 {
@@ -63,6 +64,7 @@ namespace adeeb.Controllers
             return Ok();
         }
         // GET: api/users/{id}
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -95,11 +97,11 @@ namespace adeeb.Controllers
                 return Unauthorized("Invalid password.");
             }
 
-            var token = _jwtService.GenerateToken(user.UserId, user.CompanyId);
+            var token = _jwtService.GenerateToken(user.Id, user.CompanyId);
 
             return Ok(new
             {
-                UserId = user.UserId,
+                UserId = user.Id,
                 CompanyId = user.CompanyId,
                 Token = token
             });

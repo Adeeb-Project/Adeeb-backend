@@ -55,7 +55,7 @@ namespace AdeebBackend.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            var token = _jwtService.GenerateToken(user.UserId, company.Id);
+            var token = _jwtService.GenerateToken(user.Id, company.Id);
 
 
             return Ok(new RegisteredCompanyResponseDto
