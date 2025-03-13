@@ -97,7 +97,10 @@ namespace adeeb.Controllers
                 return Unauthorized("Invalid password.");
             }
 
-            var token = _jwtService.GenerateToken(user.Id, user.CompanyId);
+            // Assuming you have a way to get the roles of the user
+            var roles = new List<string> { "Admin" }; // Replace with actual roles of the user
+
+            var token = _jwtService.GenerateToken(user.Id, user.CompanyId, roles);
 
             return Ok(new
             {
