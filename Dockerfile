@@ -19,7 +19,7 @@ WORKDIR /app
 # Copy the published output
 COPY --from=build /out ./
 
-ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_ENVIRONMENT=Development
 
 # Expose the required ports
 EXPOSE 80
