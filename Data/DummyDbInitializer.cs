@@ -9,37 +9,60 @@ namespace AdeebBackend.Data
     {
         public static void Seed(AppDbContext context)
         {
-            // Ensure the database is created
+            // Ensure database is created
             context.Database.EnsureCreated();
 
-            // Check if the database is already seeded
-            if (context.Employees.Any())
-            {
-                return; // Database already seeded
-            }
+            // If Users table already has data, exit
+            if (context.Users.Any()) return;
 
-            // Create a dummy company
+            // Create a test company
             var company = new Company
             {
-                Id = 1, // Set explicitly if needed; otherwise, let EF generate the Id
+                Id = 1,
                 Name = "Test Company",
                 LogoUrl = "http://example.com/logo.png",
-                TotalNumberOfEmployees = 3, // Updated count
+                TotalNumberOfEmployees = 3,
                 BundleType = BundleType.Basic
             };
             context.Companies.Add(company);
             context.SaveChanges();
 
-            // Create dummy employees
+            // Create Users (Admin + HR Manager)
+            var users = new User[]
+            {
+                new User
+                {
+                    Id = 1,
+                    Name = "Admin User",
+                    Email = "admin@example.com",
+                    Password = "hashedpassword", // Replace with hashed password in production
+                    CompanyId = company.Id,
+                    Role = UserRole.Admin
+                },
+                new User
+                {
+                    Id = 2,
+                    Name = "HR Manager",
+                    Email = "hr@example.com",
+                    Password = "hashedpassword", // Replace with hashed password in production
+                    CompanyId = company.Id,
+                    Role = UserRole.HRManager
+                }
+            };
+
+            context.Users.AddRange(users);
+            context.SaveChanges();
+
+            // Create Employees (Survey Participants)
             var employees = new Employee[]
             {
                 new Employee
                 {
                     Id = 1,
-                    CompanyId = company.Id,  // Reference the company
+                    CompanyId = company.Id,
                     FullName = "John Doe",
                     Email = "john.doe@example.com",
-                    JoinDate = new DateTime(2020, 1, 1),
+                    JoinDate = DateTime.UtcNow,
                     Department = "Sales",
                     Position = "Sales Executive",
                     PhoneNumber = "+966500000001"
@@ -47,75 +70,62 @@ namespace AdeebBackend.Data
                 new Employee
                 {
                     Id = 2,
-                    CompanyId = company.Id,  // Reference the company
+                    CompanyId = company.Id,
                     FullName = "Jane Smith",
                     Email = "jane.smith@example.com",
-                    JoinDate = new DateTime(2019, 5, 15),
+                    JoinDate = DateTime.UtcNow,
                     Department = "Marketing",
                     Position = "Marketing Manager",
                     PhoneNumber = "+966500000002"
-                },
-                new Employee
-                {
-                    Id = 3,  // 🔥 New employee added
-                    CompanyId = company.Id,
-                    FullName = "Mohammad Makki",
-                    Email = "mmmakki9@gmail.com",
-                    JoinDate = DateTime.UtcNow, // Assume today is the join date
-                    Department = "Engineering",
-                    Position = "Software Engineer",
-                    PhoneNumber = "+966554337339"
                 }
             };
 
             context.Employees.AddRange(employees);
             context.SaveChanges();
 
-            // Create a dummy survey
-            var surveys = new Survey[]
+            // Create a sample survey
+            var survey = new Survey
             {
-                new Survey
-                {
-                    Id = 1,
-                    CompanyId = company.Id,
-                    Title = "Employee Satisfaction Survey",
-                    Description = "We want to know your opinions",
-                    CreatedAt = DateTime.UtcNow,
-                    ExpiryDate = DateTime.UtcNow.AddDays(30)
-                }
+                Id = 1,
+                CompanyId = company.Id,
+                Title = "Employee Satisfaction Survey",
+                Description = "We want to know your opinions",
+                CreatedAt = DateTime.UtcNow,
+                ExpiryDate = DateTime.UtcNow.AddDays(30)
             };
-            context.Surveys.AddRange(surveys);
+            context.Surveys.Add(survey);
             context.SaveChanges();
 
-            // Create questions for the survey
+            // Create survey questions
             var questions = new Question[]
             {
                 new Question
                 {
                     Id = 1,
-                    SurveyId = 1,
+                    SurveyId = survey.Id,
                     Text = "How satisfied are you with your job?",
                     QuestionType = QuestionType.RatingQuestion
                 },
                 new Question
                 {
                     Id = 2,
-                    SurveyId = 1,
+                    SurveyId = survey.Id,
                     Text = "What can be improved in your work environment?",
                     QuestionType = QuestionType.TextQuestion
                 }
             };
+
             context.Questions.AddRange(questions);
             context.SaveChanges();
 
-            // Create employee survey assignments
+            // Assign the survey to employees
             var employeeSurveyLinks = new EmployeeSurveyLink[]
             {
                 new EmployeeSurveyLink
                 {
                     Id = 1,
                     EmployeeId = 1,
-                    SurveyId = 1,
+                    SurveyId = survey.Id,
                     UniqueLink = "http://localhost:3000/survey/1",
                     SentAt = DateTime.UtcNow,
                     IsCompleted = false
@@ -124,17 +134,8 @@ namespace AdeebBackend.Data
                 {
                     Id = 2,
                     EmployeeId = 2,
-                    SurveyId = 1,
+                    SurveyId = survey.Id,
                     UniqueLink = "http://localhost:3000/survey/2",
-                    SentAt = DateTime.UtcNow,
-                    IsCompleted = false
-                },
-                new EmployeeSurveyLink
-                {
-                    Id = 3,  // 🔥 Assign survey to Mohammad Makki
-                    EmployeeId = 3,
-                    SurveyId = 1,
-                    UniqueLink = "http://localhost:3000/survey/3",
                     SentAt = DateTime.UtcNow,
                     IsCompleted = false
                 }

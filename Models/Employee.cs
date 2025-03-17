@@ -12,9 +12,10 @@ namespace adeeb.Models
 
         // Foreign key to Company
         public int CompanyId { get; set; }
-
-        // Navigation property
         public Company Company { get; set; }
+
+        // Employee role (Regular employee only)
+        public bool CanTakeSurveys => true;
 
         // Navigation Property to SurveyResponse
         public ICollection<SurveyResponse> SurveyResponses { get; set; }
