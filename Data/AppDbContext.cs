@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using adeeb.Models;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace adeeb.Data
 {
@@ -13,7 +14,22 @@ namespace adeeb.Data
         public DbSet<SurveyResponse> SurveyResponses { get; set; }
         public DbSet<EmployeeSurveyLink> EmployeeSurveyLinks { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public new DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id)
+                      .ValueGeneratedOnAdd()
+                      .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
+            });
+
+            // Other model configurations...
+        }
     }
 }

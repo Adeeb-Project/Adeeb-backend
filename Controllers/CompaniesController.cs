@@ -26,7 +26,6 @@ namespace AdeebBackend.Controllers
         {
             var result = await _companiesService.RegisterCompany(companyRequest);
             return result.ToActionResult();
-
         }
     }
 }

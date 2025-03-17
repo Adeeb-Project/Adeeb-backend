@@ -30,4 +30,4 @@ app.MapControllers();
 // Seed data (optional)
 app.SeedDatabase();
 
-app.Run("http://0.0.0.0:8080");
+app.Run();
