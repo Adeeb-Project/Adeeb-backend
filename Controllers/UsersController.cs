@@ -65,7 +65,8 @@ namespace adeeb.Controllers
         }
         // GET: api/users/{id}
         [Authorize(Roles = "Admin")]
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
+
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

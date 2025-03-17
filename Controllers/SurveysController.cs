@@ -45,7 +45,7 @@ namespace AdeebBackend.Controllers
         }
 
         // GET: api/surveys/{employeeId}
-        [HttpGet("{employeeId}")]
+        [HttpGet("{employeeId:int}")]
         public async Task<ActionResult<SurveyDto>> GetSurveyDetailsAndQuestions(int employeeId)
         {
             var result = await _surveyService.GetSurveyDetailsAndQuestions(employeeId);

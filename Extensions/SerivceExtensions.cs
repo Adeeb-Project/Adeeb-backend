@@ -49,6 +49,7 @@ public static class ServiceExtensions
         //custom services add here guys:
         services.AddScoped<TwilioEmailService>();
         services.AddScoped<SurveysService>();
+        services.AddScoped<CompaniesService>();
 
         return services;
     }
