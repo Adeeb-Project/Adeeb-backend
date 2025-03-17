@@ -18,8 +18,7 @@ public class CompanyRegistrationRequestDto
     public BundleType Bundle { get; set; }
 
     // This property will hold the uploaded image file
-    [Required]
-    public IFormFile LogoImage { get; set; }
+    public IFormFile? LogoImage { get; set; }
 
     //these are for user registration
     [Required]
