@@ -26,6 +26,7 @@ namespace adeeb.Controllers
 
         // POST: api/users/register
         [HttpPost("register")]
+        [Authorize(Roles = "HRManager")]
         public async Task<ActionResult<User>> Register(RegisterNewUserForCompanyDto user)
         {
             if (string.IsNullOrWhiteSpace(user.Name) ||
@@ -43,19 +44,15 @@ namespace adeeb.Controllers
 
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            var company = await _context.Companies.FindAsync(user.CompanyId);
-            if (company == null)
-            {
-                return BadRequest("Invalid CompanyId. Company does not exist.");
-            }
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
 
             var userToAdd = new User
             {
                 Name = user.Name,
                 Email = user.Email,
                 Password = user.Password,
-                CompanyId = user.CompanyId,
-
+                CompanyId = companyId,
+                Role = UserRole.HRManager
             };
 
             _context.Users.Add(userToAdd);
@@ -99,7 +96,7 @@ namespace adeeb.Controllers
             }
 
             // Assuming you have a way to get the roles of the user
-            var roles = new List<string> { "Admin" }; // Replace with actual roles of the user
+            var roles = new List<string> { "HRManager" }; // Replace with actual roles of the user
 
             var token = _jwtService.GenerateToken(user.Id, user.CompanyId, roles);
 
