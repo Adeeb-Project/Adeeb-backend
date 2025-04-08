@@ -25,7 +25,7 @@ namespace AdeebBackend.Controllers
 
         // GET: api/surveys
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Survey>>> GetSurveys()
         {
             var companyId = int.Parse(User.FindFirst("companyId")?.Value);
@@ -35,7 +35,7 @@ namespace AdeebBackend.Controllers
 
         // POST: api/surveys/assign
         [HttpPost("assign")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto)
         {
             var userId = int.Parse(User.FindFirst("userId")?.Value);
@@ -54,7 +54,7 @@ namespace AdeebBackend.Controllers
 
         // POST: api/surveys/{surveyId}/questions
         [HttpPost("{surveyId}/questions")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult> AddQuestionToSurvey(int surveyId, QuestionDto questionDto)
         {
             var result = await _surveyService.AddQuestionToSurvey(surveyId, questionDto);
@@ -63,7 +63,7 @@ namespace AdeebBackend.Controllers
 
         // PUT: api/surveys/questions/{questionId}
         [HttpPut("questions/{questionId}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult> EditSurveyQuestion(int questionId, QuestionDto questionDto)
         {
             var result = await _surveyService.EditSurveyQuestion(questionId, questionDto);
@@ -72,7 +72,7 @@ namespace AdeebBackend.Controllers
 
         // POST: api/surveys
         [HttpPost("new")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<SurveyDto>> CreateSurvey(SurveyDto surveyDto)
         {
             var userId = int.Parse(User.FindFirst("userId")?.Value);

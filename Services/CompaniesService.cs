@@ -42,6 +42,18 @@ public class CompaniesService
             return ServiceResult<RegisteredCompanyResponseDto>.Conflict("The provided company name is already registered.");
         }
 
+        bool existsEmail = await _context.Users.AnyAsync(u => u.Email == companyRequest.Email);
+        if (existsEmail)
+        {
+            return ServiceResult<RegisteredCompanyResponseDto>.Conflict("The provided email is already registered.");
+        }
+
+        bool existsUsername = await _context.Users.AnyAsync(u => u.Name == companyRequest.NameOfUser);
+        if (existsUsername)
+        {
+            return ServiceResult<RegisteredCompanyResponseDto>.Conflict("The provided username is already registered.");
+        }
+
         _context.Companies.Add(company);
         await _context.SaveChangesAsync();
 
@@ -54,22 +66,15 @@ public class CompaniesService
             CompanyId = company.Id
         };
 
-        bool existsEmail = await _context.Users.AnyAsync(u => u.Email == user.Email);
-        if (existsEmail)
-        {
-            return ServiceResult<RegisteredCompanyResponseDto>.Conflict("The provided email is already registered.");
-        }
 
-        bool existsUsername = await _context.Users.AnyAsync(u => u.Name == user.Name);
-        if (existsUsername)
-        {
-            return ServiceResult<RegisteredCompanyResponseDto>.Conflict("The provided username is already registered.");
-        }
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        var token = _jwtService.GenerateToken(user.UserId, company.Id);
+        var roles = new List<string> { "HRManager" };
+
+
+        var token = _jwtService.GenerateToken(user.Id, company.Id, roles);
 
 
         return ServiceResult<RegisteredCompanyResponseDto>.Ok(new RegisteredCompanyResponseDto
