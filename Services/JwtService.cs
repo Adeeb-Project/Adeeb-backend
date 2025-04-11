@@ -22,7 +22,7 @@ namespace AdeebBackend.Services
             _audience = configuration["JwtSettings:Audience"];
         }
 
-        public string GenerateToken(int userId, int companyId, IList<string> roles)
+        public string GenerateToken(int userId, int companyId, string userName, IList<string> roles)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -30,7 +30,8 @@ namespace AdeebBackend.Services
             var claims = new List<Claim>
             {
                 new Claim("userId", userId.ToString()),
-                new Claim("companyId", companyId.ToString())
+                new Claim("companyId", companyId.ToString()),
+                new Claim("userName", userName) // Add the user's name to the token
             };
 
             foreach (var role in roles)

@@ -101,12 +101,13 @@ namespace adeeb.Controllers
             // Assuming you have a way to get the roles of the user
             var roles = new List<string> { "Admin" }; // Replace with actual roles of the user
 
-            var token = _jwtService.GenerateToken(user.Id, user.CompanyId, roles);
+            var token = _jwtService.GenerateToken(user.Id, user.CompanyId, user.Name, roles);
 
             return Ok(new
             {
                 UserId = user.Id,
                 CompanyId = user.CompanyId,
+                UserName = user.Name,
                 Token = token
             });
         }

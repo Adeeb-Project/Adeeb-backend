@@ -74,7 +74,7 @@ public class CompaniesService
         var roles = new List<string> { "HRManager" };
 
 
-        var token = _jwtService.GenerateToken(user.Id, company.Id, roles);
+        var token = _jwtService.GenerateToken(user.Id, user.CompanyId, user.Name, roles);
 
 
         return ServiceResult<RegisteredCompanyResponseDto>.Ok(new RegisteredCompanyResponseDto
