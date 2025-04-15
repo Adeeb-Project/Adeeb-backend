@@ -15,7 +15,7 @@ namespace AdeebBackend.Services
         private readonly HttpClient _httpClient;
 
         // Ideally, store your API key securely using configuration or environment variables.
-        private readonly string _apiKey = "";
+        _apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
         public ChatGPTService(HttpClient httpClient)
         {
             _httpClient = httpClient;
