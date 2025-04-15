@@ -16,7 +16,6 @@ namespace AdeebBackend.Services
 
         // Ideally, store your API key securely using configuration or environment variables.
         private readonly string _apiKey = "";
-        // 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
         public ChatGPTService(HttpClient httpClient)
         {
             _httpClient = httpClient;
