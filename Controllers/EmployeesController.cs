@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using adeeb.Models;
-using adeeb.Data; //ya shbab its AppDbContext not ApplicationDbContext
+using adeeb.Data; // using AppDbContext not ApplicationDbContext
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using adeeb.Services; // Ensure this matches your Services folder namespace
 
 namespace adeeb.Controllers
 {
@@ -13,10 +14,13 @@ namespace adeeb.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IChatGPTService _chatGPTService;
 
-        public EmployeesController(AppDbContext context)
+        // Update the constructor to inject IChatGPTService along with AppDbContext.
+        public EmployeesController(AppDbContext context, IChatGPTService chatGPTService)
         {
             _context = context;
+            _chatGPTService = chatGPTService;
         }
 
         // GET: api/employees
@@ -30,7 +34,9 @@ namespace adeeb.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-            var employee = await _context.Employees.Include(e => e.SurveyResponses).FirstOrDefaultAsync(e => e.Id == id);
+            var employee = await _context.Employees
+                                .Include(e => e.SurveyResponses)
+                                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
@@ -99,6 +105,21 @@ namespace adeeb.Controllers
         private bool EmployeeExists(int id)
         {
             return _context.Employees.Any(e => e.Id == id);
+        }
+
+        // NEW: GET: api/employees/summary
+        // This endpoint compiles all employees' data and sends it to ChatGPT for summarization.
+        [HttpGet("summary")]
+        public async Task<IActionResult> GetEmployeesSummary()
+        {
+            var employees = await _context.Employees.ToListAsync();
+            if (employees == null || employees.Count == 0)
+            {
+                return NotFound("No employees found to summarize.");
+            }
+
+            string summary = await _chatGPTService.SummarizeEmployeesAsync(employees);
+            return Ok(new { summary });
         }
     }
 }
