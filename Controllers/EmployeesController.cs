@@ -5,6 +5,8 @@ using adeeb.Data; //ya shbab its AppDbContext not ApplicationDbContext
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using AdeebBackend.DTOs;
 
 namespace adeeb.Controllers
 {
@@ -21,9 +23,25 @@ namespace adeeb.Controllers
 
         // GET: api/employees
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+            var employees = await _context.Employees
+                .Where(e => e.CompanyId == companyId).Select(emp => new LeftEmployeedDataForCompanyDto
+                {
+                    Id = emp.Id,
+                    FullName = emp.FullName,
+                    Email = emp.Email,
+                    JoinDate = emp.JoinDate,
+                    Department = emp.Department,
+                    Position = emp.Position,
+                    PhoneNumber = emp.PhoneNumber
+
+                }).ToListAsync();
+
+
+            return Ok(employees);
         }
 
         // GET: api/employees/{id}
@@ -42,12 +60,23 @@ namespace adeeb.Controllers
 
         // POST: api/employees
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        [Authorize]
+        public async Task<ActionResult<Employee>> PostEmployee(AddNewEmployeeDto employee)
         {
-            _context.Employees.Add(employee);
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+            _context.Employees.Add(new Employee
+            {
+                FullName = employee.FullName,
+                Email = employee.Email,
+                JoinDate = employee.JoinDate,
+                Department = employee.Department,
+                Position = employee.Position,
+                PhoneNumber = employee.PhoneNumber,
+                CompanyId = companyId
+            });
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEmployee), new { id = employee.Id }, employee);
+            return Created();
         }
 
         // PUT: api/employees/{id}
