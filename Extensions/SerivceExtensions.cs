@@ -50,6 +50,11 @@ public static class ServiceExtensions
         services.AddScoped<TwilioEmailService>();
         services.AddScoped<SurveysService>();
         services.AddScoped<CompaniesService>();
+        services.AddSingleton<ChatGptService>(provider =>
+        {
+            var apiKey = configuration["OpenAI:ApiKey"];
+            return new ChatGptService(apiKey);
+        });
 
         return services;
     }
