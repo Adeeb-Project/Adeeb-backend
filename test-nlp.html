@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey NLP Analysis Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 10px 0; }
+        #result { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            white-space: pre-wrap; 
+        }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Survey NLP Analysis Test</h1>
+    
+    <div>
+        <h2>Step 1: Login</h2>
+        <input type="email" id="email" placeholder="Email" value="test@example.com">
+        <input type="password" id="password" placeholder="Password" value="Test123!">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div>
+        <h2>Step 2: Test Analysis</h2>
+        <button onclick="testAnalysis()" id="analyzeBtn" disabled>Run Test Analysis</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        let token = '';
+
+        async function login() {
+            try {
+                const response = await fetch('http://localhost:8080/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                const data = await response.json();
+                if (data.token) {
+                    token = data.token;
+                    document.getElementById('analyzeBtn').disabled = false;
+                    showResult('Login successful!', true);
+                } else {
+                    showResult('Login failed: ' + data.message, false);
+                }
+            } catch (error) {
+                showResult('Error: ' + error.message, false);
+            }
+        }
+
+        async function testAnalysis() {
+            try {
+                const response = await fetch('http://localhost:8080/api/surveys/test-analysis', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+                showResult(JSON.stringify(data, null, 2), true);
+            } catch (error) {
+                showResult('Error: ' + error.message, false);
+            }
+        }
+
+        function showResult(message, isSuccess) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = isSuccess ? 'success' : 'error';
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EboM Survey Analysis Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 10px 0; }
+        #result { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            white-space: pre-wrap; 
+        }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>EboM Survey Analysis Test</h1>
+    
+    <div>
+        <h2>Test Analysis</h2>
+        <button onclick="testAnalysis()">Run Test Analysis</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0IiwiY29tcGFueUlkIjoiMyIsInVzZXJOYW1lIjoiRWJvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzQ1OTQzODIwLCJpc3MiOiJ5b3VyZG9tYWluLmNvbSIsImF1ZCI6InlvdXJkb21haW4uY29tIn0.6LryI3v8kPKcm3yDOKOLcXy2STHwQWTVWihNGoJUGk';
+
+        async function testAnalysis() {
+            try {
+                const response = await fetch('http://localhost:8080/api/surveys/test-analysis', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+                showResult(JSON.stringify(data, null, 2), true);
+            } catch (error) {
+                showResult('Error: ' + error.message, false);
+            }
+        }
+
+        function showResult(message, isSuccess) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = isSuccess ? 'success' : 'error';
+        }
+    </script>
+</body>
+</html> 
