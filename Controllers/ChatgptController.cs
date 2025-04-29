@@ -23,7 +23,7 @@ namespace AdeebBackend.Controllers
             {
                 return BadRequest("Question cannot be empty.");
             }
-            var result = await _chatGptService.RefineSurveyQuestion("What is the capital of France?");
+            var result = await _chatGptService.RefineSurveyQuestion(requestDto.Question);
             return Ok(result);
         }
     }
