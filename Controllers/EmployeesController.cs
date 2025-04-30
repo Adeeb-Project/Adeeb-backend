@@ -64,6 +64,13 @@ namespace adeeb.Controllers
         public async Task<ActionResult<Employee>> PostEmployee(AddNewEmployeeDto employee)
         {
             var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+
+            /*  var existing = await _context.Users.AnyAsync(u => u.Email == employee.Email);
+             if (existing)
+             {
+                 return BadRequest("Email already exists.");
+             } */
+
             _context.Employees.Add(new Employee
             {
                 FullName = employee.FullName,

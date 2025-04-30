@@ -1,5 +1,7 @@
 using AdeebBackend.DTOs;
+using AdeebBackend.Extensions;
 using AdeebBackend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,15 +18,24 @@ namespace AdeebBackend.Controllers
             _chatGptService = chatGptService;
         }
 
+        // POST: api/chatgpt/RefineSurveyQuestion
         [HttpPost("RefineSurveyQuestion")]
-        public async Task<IActionResult> RefineSurveyQuestion(ChatgptQuestionRefineRequestDto requestDto)
+        [Authorize]
+        public async Task<ActionResult<string>> RefineSurveyQuestion(ChatgptQuestionRefineRequestDto requestDto)
         {
-            if (string.IsNullOrWhiteSpace(requestDto.Question))
-            {
-                return BadRequest("Question cannot be empty.");
-            }
+
             var result = await _chatGptService.RefineSurveyQuestion(requestDto.Question);
-            return Ok(result);
+            return result.ToActionResult();
+        }
+
+        // GET: api/chatgpt/SurveyResponsesAnalysis
+        [HttpGet("SurveyResponsesAnalysis")]
+        [Authorize]
+        public async Task<ActionResult<bool>> SurveyResponsesAnalysis([FromQuery] int surveyId)
+        {
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+            var result = await _chatGptService.SurveyResponsesAnalysis(surveyId, companyId);
+            return result.ToActionResult();
         }
     }
 }

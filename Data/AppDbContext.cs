@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using adeeb.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
+using AdeebBackend.Models;
 
 namespace adeeb.Data
 {
@@ -15,6 +16,7 @@ namespace adeeb.Data
         public DbSet<EmployeeSurveyLink> EmployeeSurveyLinks { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionResponse> QuestionResponses { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

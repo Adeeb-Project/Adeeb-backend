@@ -15,6 +15,7 @@ public class SurveysService
     private readonly TwilioEmailService _twilioEmailService;
 
 
+
     public SurveysService(AppDbContext context, IConfiguration configuration, TwilioEmailService twilioEmailService)
     {
         _context = context;
@@ -40,22 +41,22 @@ public class SurveysService
     }
 
     public async Task<ServiceResult<QuestionDto>> AddQuestionToSurvey(int surveyId, QuestionDto questionDto)
-{
-    var survey = await _context.Surveys.Include(s => s.Questions).FirstOrDefaultAsync(s => s.Id == surveyId);
-    if (survey == null)
     {
-        return ServiceResult<QuestionDto>.NotFound("Survey not found.");
-    }
+        var survey = await _context.Surveys.Include(s => s.Questions).FirstOrDefaultAsync(s => s.Id == surveyId);
+        if (survey == null)
+        {
+            return ServiceResult<QuestionDto>.NotFound("Survey not found.");
+        }
 
-    var newQuestion = new Question
-    {
-        SurveyId = surveyId,
-        Text = questionDto.Text,
-        QuestionType = questionDto.QuestionType
-    };
+        var newQuestion = new Question
+        {
+            SurveyId = surveyId,
+            Text = questionDto.Text,
+            QuestionType = questionDto.QuestionType
+        };
 
-    _context.Questions.Add(newQuestion);
-    await _context.SaveChangesAsync();
+        _context.Questions.Add(newQuestion);
+        await _context.SaveChangesAsync();
 
         return ServiceResult<QuestionDto>.Ok(new QuestionDto
         {
@@ -66,28 +67,28 @@ public class SurveysService
     }
 
     public async Task<ServiceResult<QuestionDto>> EditSurveyQuestion(int questionId, QuestionDto questionDto)
-{
-    var question = await _context.Questions.FindAsync(questionId);
-    if (question == null)
     {
-        return ServiceResult<QuestionDto>.NotFound("Question not found.");
+        var question = await _context.Questions.FindAsync(questionId);
+        if (question == null)
+        {
+            return ServiceResult<QuestionDto>.NotFound("Question not found.");
+        }
+
+        question.Text = questionDto.Text;
+        question.QuestionType = questionDto.QuestionType;
+
+        _context.Questions.Update(question);
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<QuestionDto>.Ok(new QuestionDto
+        {
+            Id = question.Id,
+            Text = question.Text,
+            QuestionType = question.QuestionType
+        });
     }
 
-    question.Text = questionDto.Text;
-    question.QuestionType = questionDto.QuestionType;
 
-    _context.Questions.Update(question);
-    await _context.SaveChangesAsync();
-
-    return ServiceResult<QuestionDto>.Ok(new QuestionDto
-    {
-        Id = question.Id,
-        Text = question.Text,
-        QuestionType = question.QuestionType
-    });
-}
-
-    
 
 
     public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto, int userId, int companyId)
@@ -185,68 +186,69 @@ Best regards,
         return ServiceResult<EmptyResult>.Created();
     }
     public async Task<ServiceResult<SurveyDto>> CreateSurvey(SurveyDto surveyDto, int userId, int companyId)
-{
-    var newSurvey = new Survey
     {
-        Title = surveyDto.Title,
-        Description = surveyDto.Description,
-        CreatedAt = DateTime.UtcNow,
-        ExpiryDate = surveyDto.ExpiryDate,
-        CompanyId = companyId,
-        Questions = surveyDto.Questions?.Select(q => new Question
+        var newSurvey = new Survey
         {
-            Text = q.Text,
-            QuestionType = q.QuestionType
-        }).ToList() ?? new List<Question>()
-    };
+            Title = surveyDto.Title,
+            Description = surveyDto.Description,
+            CreatedAt = DateTime.UtcNow,
+            ExpiryDate = surveyDto.ExpiryDate,
+            CompanyId = companyId,
+            Questions = surveyDto.Questions?.Select(q => new Question
+            {
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList() ?? new List<Question>()
+        };
 
-    _context.Surveys.Add(newSurvey);
-    await _context.SaveChangesAsync(); // Auto-generates SurveyId
+        _context.Surveys.Add(newSurvey);
+        await _context.SaveChangesAsync(); // Auto-generates SurveyId
 
-    return ServiceResult<SurveyDto>.Ok(new SurveyDto
-    {
-        SurveyId = newSurvey.Id, // Gets the auto-generated ID
-        Title = newSurvey.Title,
-        Description = newSurvey.Description,
-        Questions = newSurvey.Questions.Select(q => new QuestionDto
+        return ServiceResult<SurveyDto>.Ok(new SurveyDto
         {
-            Id = q.Id,
-            Text = q.Text,
-            QuestionType = q.QuestionType
-        }).ToList()
-    });
-}
+            SurveyId = newSurvey.Id, // Gets the auto-generated ID
+            Title = newSurvey.Title,
+            Description = newSurvey.Description,
+            Questions = newSurvey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList()
+        });
+    }
 
 
 
     public async Task<ServiceResult<SurveyDto>> GetSurveyDetailsAndQuestions(int employeeId)
-{
-    var assignment = await _context.EmployeeSurveyLinks
-        .Include(e => e.Survey)
-        .ThenInclude(s => s.Questions)
-        .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
-
-    if (assignment == null)
     {
-        return ServiceResult<SurveyDto>.NotFound("No active survey assignment found.");
+        var assignment = await _context.EmployeeSurveyLinks
+            .Include(e => e.Survey)
+            .ThenInclude(s => s.Questions)
+            .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
+
+        if (assignment == null)
+        {
+            return ServiceResult<SurveyDto>.NotFound("No active survey assignment found.");
+        }
+
+        var survey = assignment.Survey;
+        var surveyDto = new SurveyDto
+        {
+            SurveyId = survey.Id,
+            Title = survey.Title,
+            Description = survey.Description,
+            Questions = survey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList()
+        };
+
+        return ServiceResult<SurveyDto>.Ok(surveyDto);
     }
 
-    var survey = assignment.Survey;
-    var surveyDto = new SurveyDto
-    {
-        SurveyId = survey.Id,
-        Title = survey.Title,
-        Description = survey.Description,
-        Questions = survey.Questions.Select(q => new QuestionDto
-        {
-            Id = q.Id,
-            Text = q.Text,
-            QuestionType = q.QuestionType
-        }).ToList()
-    };
-
-    return ServiceResult<SurveyDto>.Ok(surveyDto);
-}
 
 
 }
