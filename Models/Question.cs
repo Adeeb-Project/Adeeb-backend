@@ -19,7 +19,8 @@ namespace adeeb.Models
     public enum QuestionType
     {
         TextQuestion,
-        RatingQuestion
+        RatingQuestion,
+        MultipleChoiceQuestion,
     }
 
 

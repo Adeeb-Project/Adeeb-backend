@@ -6,8 +6,7 @@ using adeeb.Data;
 using adeeb.Models;
 using AdeebBackend.Services;
 using Microsoft.EntityFrameworkCore;
-
-
+using OpenAI.Chat;
 
 public static class ServiceExtensions
 {
@@ -50,6 +49,17 @@ public static class ServiceExtensions
         services.AddScoped<TwilioEmailService>();
         services.AddScoped<SurveysService>();
         services.AddScoped<CompaniesService>();
+        services.AddSingleton(provider =>
+        {
+
+            var config = provider.GetRequiredService<IConfiguration>();
+            return new ChatClient(
+             model: "gpt-4o",
+            apiKey: config["OpenAI:ApiKey"]
+        );
+        });
+        services.AddScoped<ChatGptService>();
+
 
         return services;
     }

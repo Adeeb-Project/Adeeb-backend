@@ -24,11 +24,22 @@ namespace adeeb.Controllers
         // GET: api/employees
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<LeftEmployeedDataForCompanyDto>>> GetEmployees()
         {
             var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+
             var employees = await _context.Employees
-                .Where(e => e.CompanyId == companyId).Select(emp => new LeftEmployeedDataForCompanyDto
+                .Where(e => e.CompanyId == companyId)
+                .ToListAsync();
+
+            var result = new List<LeftEmployeedDataForCompanyDto>();
+
+            foreach (var emp in employees)
+            {
+                var entry = await _context.EmployeeSurveyLinks
+                    .FirstOrDefaultAsync(s => s.EmployeeId == emp.Id);
+
+                result.Add(new LeftEmployeedDataForCompanyDto
                 {
                     Id = emp.Id,
                     FullName = emp.FullName,
@@ -36,13 +47,15 @@ namespace adeeb.Controllers
                     JoinDate = emp.JoinDate,
                     Department = emp.Department,
                     Position = emp.Position,
-                    PhoneNumber = emp.PhoneNumber
+                    PhoneNumber = emp.PhoneNumber,
+                    SurveyStatus = entry == null ? EmployeeSurvyeStatus.SurveyNotAssigned :
+                        entry.IsCompleted ? EmployeeSurvyeStatus.SurveyCompleted : EmployeeSurvyeStatus.SurveySent
+                });
+            }
 
-                }).ToListAsync();
-
-
-            return Ok(employees);
+            return Ok(result);
         }
+
 
         // GET: api/employees/{id}
         [HttpGet("{id}")]
@@ -64,6 +77,13 @@ namespace adeeb.Controllers
         public async Task<ActionResult<Employee>> PostEmployee(AddNewEmployeeDto employee)
         {
             var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+
+            /*  var existing = await _context.Users.AnyAsync(u => u.Email == employee.Email);
+             if (existing)
+             {
+                 return BadRequest("Email already exists.");
+             } */
+
             _context.Employees.Add(new Employee
             {
                 FullName = employee.FullName,
