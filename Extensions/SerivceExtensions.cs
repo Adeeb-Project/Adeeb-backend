@@ -51,6 +51,7 @@ public static class ServiceExtensions
         services.AddScoped<CompaniesService>();
         services.AddSingleton(provider =>
         {
+
             var config = provider.GetRequiredService<IConfiguration>();
             return new ChatClient(
              model: "gpt-4o",

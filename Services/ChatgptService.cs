@@ -99,7 +99,7 @@ public class ChatGptService
                 can be detected.
                 Do not add any extra information or context.
                 Just return the question title and one summary & analysis of it responses gathered up as one asnwer from your side.
-                If you can make your answer shorter do it, but do not make it too short, we care about the details of what is happening behind the company and if there is a real issue.
+                If you can make your answer shorter do it, but do not make it too short, we care about the details of what is happening behind the company and if there is a real issue. But still we need it to short so that the reader does not get bored.
                 Do not bring up each response separately.
                 If the responses were numbers, do not analyze them separately.
                 If the reponses were numbers, write the average, the min, and the max. and a short summary analysis.
