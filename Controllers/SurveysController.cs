@@ -85,7 +85,7 @@ namespace AdeebBackend.Controllers
 
         // POSt: api/surveys/{employeeId}
         [HttpPost("{employeeId:int}")]
-        public async Task<ActionResult<EmptyResult>> SubmitSurvey(int employeeId, SurveySubmissionDto surveyDto)
+        public async Task<ActionResult<string>> SubmitSurvey(int employeeId, SurveySubmissionDto surveyDto)
         {
             var result = await _surveyService.SubmitSurvey(employeeId, surveyDto);
             return result.ToActionResult();
