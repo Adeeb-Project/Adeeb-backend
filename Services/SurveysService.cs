@@ -3,6 +3,7 @@ using adeeb.Data;
 using adeeb.Models;
 using AdeebBackend.DTOs;
 using AdeebBackend.DTOs.Common;
+using AdeebBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -251,6 +252,49 @@ Best regards,
         };
 
         return ServiceResult<SurveyDto>.Ok(surveyDto);
+    }
+
+    public async Task<ServiceResult<string>> SubmitSurvey(int employeeId, SurveySubmissionDto surveyDto)
+    {
+        var assignment = await _context.EmployeeSurveyLinks
+            .Include(e => e.Survey)
+            .ThenInclude(s => s.Questions)
+            .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
+
+        if (assignment == null)
+        {
+            return ServiceResult<string>.NotFound("No active survey assignment found.");
+        }
+
+        var survey = assignment.Survey;
+
+        // Validate the submission
+        if (surveyDto.QuestionsANswers.Count != survey.Questions.Count)
+        {
+            return ServiceResult<string>.BadRequest("Invalid number of responses.");
+        }
+
+        foreach (var questionDto in surveyDto.QuestionsANswers)
+        {
+            var question = await _context.Questions.FindAsync(questionDto.QuestionId);
+            if (question == null || question.SurveyId != survey.Id)
+            {
+                return ServiceResult<string>.BadRequest($"Invalid question ID: {questionDto.QuestionId}");
+            }
+
+            var response = new QuestionResponse
+            {
+                QuestionId = question.Id,
+                Answer = questionDto.Answer
+            };
+
+            _context.QuestionResponses.Add(response);
+        }
+
+        assignment.IsCompleted = true;
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<string>.Ok("Survey submitted successfully.");
     }
 
 
