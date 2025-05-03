@@ -269,12 +269,12 @@ Best regards,
         var survey = assignment.Survey;
 
         // Validate the submission
-        if (surveyDto.QuestionsANswers.Count != survey.Questions.Count)
+        if (surveyDto.QuestionsAnswers.Count != survey.Questions.Count)
         {
             return ServiceResult<string>.BadRequest("Invalid number of responses.");
         }
 
-        foreach (var questionDto in surveyDto.QuestionsANswers)
+        foreach (var questionDto in surveyDto.QuestionsAnswers)
         {
             var question = await _context.Questions.FindAsync(questionDto.QuestionId);
             if (question == null || question.SurveyId != survey.Id)
