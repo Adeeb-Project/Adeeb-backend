@@ -227,10 +227,13 @@ Best regards,
             .ThenInclude(s => s.Questions)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
+
         if (assignment == null)
         {
             return ServiceResult<SurveyDto>.NotFound("No active survey assignment found.");
         }
+
+        var employee = await _context.Employees.FindAsync(employeeId);
 
         var survey = assignment.Survey;
         var surveyDto = new SurveyDto
@@ -238,6 +241,7 @@ Best regards,
             SurveyId = survey.Id,
             Title = survey.Title,
             Description = survey.Description,
+            EmployeeName = employee.FullName,
             Questions = survey.Questions.Select(q => new QuestionDto
             {
                 Id = q.Id,
