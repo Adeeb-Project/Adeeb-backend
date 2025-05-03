@@ -274,6 +274,15 @@ Best regards,
             return ServiceResult<string>.BadRequest("Invalid number of responses.");
         }
 
+        var surveyResponse = new SurveyResponse
+        {
+            SurveyId = survey.Id,
+            EmployeeId = employeeId,
+            SubmittedAt = DateTime.UtcNow
+        };
+        _context.SurveyResponses.Add(surveyResponse);
+        await _context.SaveChangesAsync();
+
         foreach (var questionDto in surveyDto.QuestionsAnswers)
         {
             var question = await _context.Questions.FindAsync(questionDto.QuestionId);
@@ -285,7 +294,8 @@ Best regards,
             var response = new QuestionResponse
             {
                 QuestionId = question.Id,
-                Answer = questionDto.Answer
+                Answer = questionDto.Answer,
+                SurveyResponseId = surveyResponse.Id
             };
 
             _context.QuestionResponses.Add(response);
