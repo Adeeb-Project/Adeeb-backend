@@ -278,7 +278,8 @@ Best regards,
         {
             SurveyId = survey.Id,
             EmployeeId = employeeId,
-            SubmittedAt = DateTime.UtcNow
+            SubmittedAt = DateTime.UtcNow,
+            Response = "Submitted successfully" // Placeholder 
         };
         _context.SurveyResponses.Add(surveyResponse);
         await _context.SaveChangesAsync();
