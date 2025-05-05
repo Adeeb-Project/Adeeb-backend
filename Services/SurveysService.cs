@@ -26,7 +26,7 @@ public class SurveysService
 
     public async Task<ServiceResult<IEnumerable<SurveyDto>>> GetSurveys(int companyId)
     {
-        var surveys = await _context.Surveys.Include(e => e.Questions).Where(t => t.CompanyId == companyId).Select(s => new SurveyDto
+        var surveys = await _context.Surveys.Include(e => e.Questions).ThenInclude(q => q.Options).Where(t => t.CompanyId == companyId).Select(s => new SurveyDto
         {
             SurveyId = s.Id,
             Title = s.Title,
@@ -35,9 +35,13 @@ public class SurveysService
             {
                 Id = q.Id,
                 Text = q.Text,
-                QuestionType = q.QuestionType
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options.Select(o => o.OptionText).ToList()
+        : null
             }).ToList()
         }).ToListAsync();
+
         return ServiceResult<IEnumerable<SurveyDto>>.Ok(surveys);
     }
 
@@ -195,11 +199,14 @@ Best regards,
             CreatedAt = DateTime.UtcNow,
             ExpiryDate = surveyDto.ExpiryDate,
             CompanyId = companyId,
-            Questions = surveyDto.Questions?.Select(q => new Question
+            Questions = surveyDto.Questions.Select(q => new Question
             {
                 Text = q.Text,
-                QuestionType = q.QuestionType
-            }).ToList() ?? new List<Question>()
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+         ? q.Options?.Select(opt => new QuestionMcqOption { OptionText = opt }).ToList()
+         : null
+            }).ToList()
         };
 
         _context.Surveys.Add(newSurvey);
@@ -225,7 +232,7 @@ Best regards,
     {
         var assignment = await _context.EmployeeSurveyLinks
             .Include(e => e.Survey)
-            .ThenInclude(s => s.Questions)
+            .ThenInclude(s => s.Questions).ThenInclude(q => q.Options)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
 
@@ -247,8 +254,12 @@ Best regards,
             {
                 Id = q.Id,
                 Text = q.Text,
-                QuestionType = q.QuestionType
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options.Select(o => o.OptionText).ToList()
+        : null
             }).ToList()
+
         };
 
         return ServiceResult<SurveyDto>.Ok(surveyDto);
@@ -324,14 +335,22 @@ Best regards,
         existingSurvey.ExpiryDate = surveyDto.ExpiryDate;
 
         // Remove old questions
+        // Note: This will also remove the options associated with the questions
+        var allOptions = existingSurvey.Questions.SelectMany(q => q.Options).ToList();
+        _context.QuestionMcqOptions.RemoveRange(allOptions);
         _context.Questions.RemoveRange(existingSurvey.Questions);
+
 
         // Add new questions
         existingSurvey.Questions = surveyDto.Questions.Select(q => new Question
         {
             Text = q.Text,
-            QuestionType = q.QuestionType
+            QuestionType = q.QuestionType,
+            Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options?.Select(opt => new QuestionMcqOption { OptionText = opt }).ToList()
+        : null
         }).ToList();
+
 
         await _context.SaveChangesAsync();
 
@@ -353,7 +372,8 @@ Best regards,
     public async Task<ServiceResult<SurveyDto>> GetSurveyByIdAsync(int surveyId, int companyId)
     {
         var survey = await _context.Surveys
-            .Include(s => s.Questions)
+            .Include(s => s.Questions).ThenInclude(q => q.Options)
+
             .FirstOrDefaultAsync(s => s.Id == surveyId && s.CompanyId == companyId);
 
         if (survey == null)
@@ -369,8 +389,12 @@ Best regards,
             {
                 Id = q.Id,
                 Text = q.Text,
-                QuestionType = q.QuestionType
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+         ? q.Options.Select(o => o.OptionText).ToList()
+         : null
             }).ToList()
+
         };
 
         return ServiceResult<SurveyDto>.Ok(dto);
