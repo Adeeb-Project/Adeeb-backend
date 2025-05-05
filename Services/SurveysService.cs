@@ -269,7 +269,7 @@ Best regards,
     {
         var assignment = await _context.EmployeeSurveyLinks
             .Include(e => e.Survey)
-            .ThenInclude(s => s.Questions)
+            .ThenInclude(s => s.Questions).ThenInclude(q => q.Options)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
         if (assignment == null)
@@ -295,23 +295,34 @@ Best regards,
         _context.SurveyResponses.Add(surveyResponse);
         await _context.SaveChangesAsync();
 
-        foreach (var questionDto in surveyDto.QuestionsAnswers)
+        foreach (var qa in surveyDto.QuestionsAnswers)
         {
-            var question = await _context.Questions.FindAsync(questionDto.QuestionId);
+            var question = await _context.Questions
+                .Include(q => q.Options)
+                .FirstOrDefaultAsync(q => q.Id == qa.QuestionId);
+
             if (question == null || question.SurveyId != survey.Id)
+                return ServiceResult<string>.BadRequest($"Invalid question ID: {qa.QuestionId}");
+
+            if (question.QuestionType == QuestionType.MultipleChoiceQuestion)
             {
-                return ServiceResult<string>.BadRequest($"Invalid question ID: {questionDto.QuestionId}");
+                // If using text:
+                if (!question.Options.Any(o => o.OptionText == qa.Answer))
+                    return ServiceResult<string>.BadRequest($"Invalid option for question {qa.QuestionId}");
+
+                // —OR— if using ID:
+                // if (!question.Options.Any(o => o.Id == qa.AnswerOptionId))
+                //     return ServiceResult<string>.BadRequest($"Invalid option for question {qa.QuestionId}");
             }
 
-            var response = new QuestionResponse
+            _context.QuestionResponses.Add(new QuestionResponse
             {
                 QuestionId = question.Id,
-                Answer = questionDto.Answer,
+                Answer = qa.Answer,               // or store AnswerOptionId in a separate column
                 SurveyResponseId = surveyResponse.Id
-            };
-
-            _context.QuestionResponses.Add(response);
+            });
         }
+
 
         assignment.IsCompleted = true;
         await _context.SaveChangesAsync();

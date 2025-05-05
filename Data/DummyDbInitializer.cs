@@ -1,6 +1,6 @@
-
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using AdeebBackend.Models;
 using adeeb.Models;
 using adeeb.Data;
@@ -95,6 +95,27 @@ namespace AdeebBackend.Data
             context.Questions.AddRange(questions);
             context.SaveChanges();
 
+            // Add one MCQ question
+            var mcqQuestion = new Question
+            {
+                Id = 11,
+                SurveyId = survey.Id,
+                Text = "Which benefit did you value the most during your time here?",
+                QuestionType = QuestionType.MultipleChoiceQuestion
+            };
+            context.Questions.Add(mcqQuestion);
+            context.SaveChanges();
+
+            // Add options for the MCQ question
+            var mcqOptions = new List<QuestionMcqOption>
+            {
+                new QuestionMcqOption { QuestionId = mcqQuestion.Id, OptionText = "Health Insurance" },
+                new QuestionMcqOption { QuestionId = mcqQuestion.Id, OptionText = "Flexible Hours" },
+                new QuestionMcqOption { QuestionId = mcqQuestion.Id, OptionText = "Annual Bonus" }
+            };
+            context.QuestionMcqOptions.AddRange(mcqOptions);
+            context.SaveChanges();
+
             var rnd = new Random();
             var textAnswers = new[]
             {
@@ -122,6 +143,7 @@ namespace AdeebBackend.Data
                 context.SurveyResponses.Add(surveyResponse);
                 context.SaveChanges();
 
+                // Prepare responses for existing questions
                 var questionResponses = questions.Select((q, idx) => new QuestionResponse
                 {
                     SurveyResponseId = surveyResponse.Id,
@@ -129,7 +151,15 @@ namespace AdeebBackend.Data
                     Answer = q.QuestionType == QuestionType.RatingQuestion
                         ? rnd.Next(1, 6).ToString()
                         : textAnswers[(employee.Id + idx) % textAnswers.Length]
-                }).ToArray();
+                }).ToList();
+
+                // Add response for the MCQ question
+                questionResponses.Add(new QuestionResponse
+                {
+                    SurveyResponseId = surveyResponse.Id,
+                    QuestionId = mcqQuestion.Id,
+                    Answer = mcqOptions[rnd.Next(mcqOptions.Count)].OptionText
+                });
 
                 context.QuestionResponses.AddRange(questionResponses);
                 context.SaveChanges();
