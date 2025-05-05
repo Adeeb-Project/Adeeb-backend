@@ -89,4 +89,29 @@ public class CompaniesService
         });
     }
 
+    public async Task<ServiceResult<CompanyRatesResponseDto>> GetCompanyRates(int companyId)
+    {
+        var company = await _context.Companies
+            .FirstOrDefaultAsync(c => c.Id == companyId);
+
+
+        var companyTotalNumberOfEmployeesSinceBeginning = company!.TotalNumberOfEmployees;
+
+        var totalNumberOfExitedEmployees = await _context.Employees
+            .Where(e => e.CompanyId == companyId)
+            .CountAsync();
+
+        var totalNumberOfActiveEmployees = companyTotalNumberOfEmployeesSinceBeginning - totalNumberOfExitedEmployees;
+
+        var retentionRate = (double)totalNumberOfActiveEmployees / companyTotalNumberOfEmployeesSinceBeginning * 100;
+        var turnoverRate = (double)totalNumberOfExitedEmployees / companyTotalNumberOfEmployeesSinceBeginning * 100;
+
+
+        return ServiceResult<CompanyRatesResponseDto>.Ok(new CompanyRatesResponseDto
+        {
+            RetentionRate = Math.Round(retentionRate, 2),
+            TurnoverRate = Math.Round(turnoverRate, 2)
+        });
+    }
+
 }
