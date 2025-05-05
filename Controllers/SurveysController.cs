@@ -92,6 +92,20 @@ namespace AdeebBackend.Controllers
         }
 
 
+        [HttpPut("edit")]
+        [Authorize]
+        public async Task<ActionResult<SurveyDto>> EditSurvey([FromBody] SurveyDto surveyDto)
+        {
+            var userId = int.Parse(User.FindFirst("userId")?.Value);
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+
+            var result = await _surveyService.UpdateSurveyAsync(surveyDto, userId, companyId);
+
+            return result.ToActionResult();
+        }
+
+
+
 
     }
 

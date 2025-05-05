@@ -309,5 +309,48 @@ Best regards,
     }
 
 
+    public async Task<ServiceResult<SurveyDto>> UpdateSurveyAsync(SurveyDto surveyDto, int userId, int companyId)
+    {
+        var existingSurvey = await _context.Surveys
+            .Include(s => s.Questions)
+            .FirstOrDefaultAsync(s => s.Id == surveyDto.SurveyId && s.CompanyId == companyId);
+
+        if (existingSurvey == null)
+            return ServiceResult<SurveyDto>.BadRequest("Survey not found or access denied.");
+
+        // Update survey fields
+        existingSurvey.Title = surveyDto.Title;
+        existingSurvey.Description = surveyDto.Description;
+        existingSurvey.ExpiryDate = surveyDto.ExpiryDate;
+
+        // Remove old questions
+        _context.Questions.RemoveRange(existingSurvey.Questions);
+
+        // Add new questions
+        existingSurvey.Questions = surveyDto.Questions.Select(q => new Question
+        {
+            Text = q.Text,
+            QuestionType = q.QuestionType
+        }).ToList();
+
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<SurveyDto>.Ok(new SurveyDto
+        {
+            SurveyId = existingSurvey.Id,
+            Title = existingSurvey.Title,
+            Description = existingSurvey.Description,
+            ExpiryDate = existingSurvey.ExpiryDate,
+            Questions = existingSurvey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList()
+        });
+    }
+
+
+
 
 }
