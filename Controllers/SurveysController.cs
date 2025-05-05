@@ -52,6 +52,19 @@ namespace AdeebBackend.Controllers
             return result.ToActionResult();
         }
 
+        [HttpGet("{surveyId}")]
+        [Authorize]
+        public async Task<ActionResult<SurveyDto>> GetSurveyById(int surveyId)
+        {
+            var userId = int.Parse(User.FindFirst("userId")?.Value);
+            var companyId = int.Parse(User.FindFirst("companyId")?.Value);
+
+            var result = await _surveyService.GetSurveyByIdAsync(surveyId, companyId);
+
+            return result.ToActionResult();
+        }
+
+
         // POST: api/surveys/{surveyId}/questions
         [HttpPost("{surveyId}/questions")]
         [Authorize]

@@ -350,6 +350,33 @@ Best regards,
         });
     }
 
+    public async Task<ServiceResult<SurveyDto>> GetSurveyByIdAsync(int surveyId, int companyId)
+    {
+        var survey = await _context.Surveys
+            .Include(s => s.Questions)
+            .FirstOrDefaultAsync(s => s.Id == surveyId && s.CompanyId == companyId);
+
+        if (survey == null)
+            return ServiceResult<SurveyDto>.BadRequest("Survey not found or access denied.");
+
+        var dto = new SurveyDto
+        {
+            SurveyId = survey.Id,
+            Title = survey.Title,
+            Description = survey.Description,
+            ExpiryDate = survey.ExpiryDate,
+            Questions = survey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList()
+        };
+
+        return ServiceResult<SurveyDto>.Ok(dto);
+    }
+
+
 
 
 
