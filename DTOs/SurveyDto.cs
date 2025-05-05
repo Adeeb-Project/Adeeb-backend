@@ -8,5 +8,6 @@ public class SurveyDto
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime? ExpiryDate { get; set; }
+    public string EmployeeName { get; set; }
     public List<QuestionDto> Questions { get; set; } = new List<QuestionDto>();
 }

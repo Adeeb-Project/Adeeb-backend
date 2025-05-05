@@ -3,6 +3,7 @@ using adeeb.Data;
 using adeeb.Models;
 using AdeebBackend.DTOs;
 using AdeebBackend.DTOs.Common;
+using AdeebBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -227,10 +228,13 @@ Best regards,
             .ThenInclude(s => s.Questions)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
+
         if (assignment == null)
         {
             return ServiceResult<SurveyDto>.NotFound("No active survey assignment found.");
         }
+
+        var employee = await _context.Employees.FindAsync(employeeId);
 
         var survey = assignment.Survey;
         var surveyDto = new SurveyDto
@@ -238,6 +242,7 @@ Best regards,
             SurveyId = survey.Id,
             Title = survey.Title,
             Description = survey.Description,
+            EmployeeName = employee.FullName,
             Questions = survey.Questions.Select(q => new QuestionDto
             {
                 Id = q.Id,
@@ -247,6 +252,60 @@ Best regards,
         };
 
         return ServiceResult<SurveyDto>.Ok(surveyDto);
+    }
+
+    public async Task<ServiceResult<string>> SubmitSurvey(int employeeId, SurveySubmissionDto surveyDto)
+    {
+        var assignment = await _context.EmployeeSurveyLinks
+            .Include(e => e.Survey)
+            .ThenInclude(s => s.Questions)
+            .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
+
+        if (assignment == null)
+        {
+            return ServiceResult<string>.NotFound("No active survey assignment found.");
+        }
+
+        var survey = assignment.Survey;
+
+        // Validate the submission
+        if (surveyDto.QuestionsAnswers.Count != survey.Questions.Count)
+        {
+            return ServiceResult<string>.BadRequest("Invalid number of responses.");
+        }
+
+        var surveyResponse = new SurveyResponse
+        {
+            SurveyId = survey.Id,
+            EmployeeId = employeeId,
+            SubmittedAt = DateTime.UtcNow,
+            Response = "Submitted successfully" // Placeholder 
+        };
+        _context.SurveyResponses.Add(surveyResponse);
+        await _context.SaveChangesAsync();
+
+        foreach (var questionDto in surveyDto.QuestionsAnswers)
+        {
+            var question = await _context.Questions.FindAsync(questionDto.QuestionId);
+            if (question == null || question.SurveyId != survey.Id)
+            {
+                return ServiceResult<string>.BadRequest($"Invalid question ID: {questionDto.QuestionId}");
+            }
+
+            var response = new QuestionResponse
+            {
+                QuestionId = question.Id,
+                Answer = questionDto.Answer,
+                SurveyResponseId = surveyResponse.Id
+            };
+
+            _context.QuestionResponses.Add(response);
+        }
+
+        assignment.IsCompleted = true;
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<string>.Ok("Survey submitted successfully.");
     }
 
 
