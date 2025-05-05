@@ -52,7 +52,7 @@ namespace AdeebBackend.Controllers
             return result.ToActionResult();
         }
 
-        [HttpGet("{surveyId}")]
+        [HttpGet("single/{surveyId:int}")]
         [Authorize]
         public async Task<ActionResult<SurveyDto>> GetSurveyById(int surveyId)
         {
