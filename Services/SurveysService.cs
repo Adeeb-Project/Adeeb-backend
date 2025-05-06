@@ -96,7 +96,7 @@ public class SurveysService
 
 
 
-    public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto, int userId, int companyId)
+    /* public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto, int userId, int companyId)
     {
         //just checking first before anything if the surveyId and employeeId actuaclly exist
         var employeeExists = await _context.Employees.AnyAsync(e => e.Id == requestDto.EmployeeId);
@@ -148,11 +148,70 @@ public class SurveysService
         var company = await _context.Companies.FindAsync(employee.CompanyId);
 
         // Send email to the employee
-        _twilioEmailService.SendEmailAsync(
-            employee.Email,
-            "Survey Assignment | استبيان الخروج",
-            $@"
-Dear {employee.FullName},
+
+
+        return ServiceResult<EmptyResult>.Created();
+    } */
+
+    public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(
+            AssignSurveyForEmployeeRequestDto requestDto,
+            int userId,
+            int companyId)
+    {
+        // Validate survey ownership
+        var surveyExists = await _context.Surveys
+            .AnyAsync(s => s.Id == requestDto.SurveyId && s.CompanyId == companyId);
+        if (!surveyExists)
+            return ServiceResult<EmptyResult>.BadRequest("Invalid SurveyId or access denied.");
+
+        // Load employees in one query
+        var employees = await _context.Employees
+            .Where(e => requestDto.EmployeeId.Contains(e.Id))
+            .ToListAsync();
+
+        // Validate employee IDs
+        var invalidIds = requestDto.EmployeeId.Except(employees.Select(e => e.Id)).ToList();
+        if (invalidIds.Any())
+            return ServiceResult<EmptyResult>
+                .BadRequest($"Employee IDs not found: {string.Join(", ", invalidIds)}.");
+
+        // Validate company match
+        if (employees.Any(e => e.CompanyId != companyId))
+            return ServiceResult<EmptyResult>
+                .BadRequest("One or more employees are not in your company.");
+
+        // Skip already assigned
+        var already = await _context.EmployeeSurveyLinks
+            .Where(link => link.SurveyId == requestDto.SurveyId
+                           && requestDto.EmployeeId.Contains(link.EmployeeId))
+            .Select(link => link.EmployeeId)
+            .ToListAsync();
+        if (already.Any())
+            return ServiceResult<EmptyResult>
+                .BadRequest($"Survey already assigned to employee(s): {string.Join(", ", already)}.");
+
+        // Create assignments and send emails
+        var domainName = _configuration["AppSettings:DomainName"];
+        var newLinks = new List<EmployeeSurveyLink>();
+        var company = await _context.Companies.FindAsync(companyId);
+
+        foreach (var emp in employees)
+        {
+            var uniqueLink = $"{domainName}/survey/{emp.Id}";
+            newLinks.Add(new EmployeeSurveyLink
+            {
+                EmployeeId = emp.Id,
+                SurveyId = requestDto.SurveyId,
+                UniqueLink = uniqueLink,
+                SentAt = DateTime.UtcNow,
+                IsCompleted = false
+            });
+
+            _twilioEmailService.SendEmailAsync(
+         emp.Email,
+         "Survey Assignment | استبيان الخروج",
+         $@"
+Dear {emp.FullName},
 
 We hope this email finds you well. As part of our commitment to continuous improvement, we invite you to participate in an **anonymous exit survey** about your experience at **{company.Name}**.
 
@@ -170,7 +229,7 @@ Best regards,
 
 ---
   
-عزيزي/عزيزتي {employee.FullName}،
+عزيزي/عزيزتي {emp.FullName}،
 
 نأمل أن تصلك هذه الرسالة وأنت بخير. كجزء من التزامنا بالتحسين المستمر، ندعوك للمشاركة في **استبيان خروج مجهول الهوية** حول تجربتك في **{company.Name}**.
 
@@ -186,7 +245,11 @@ Best regards,
 تحياتنا،  
 {company.Name}
 "
-        );
+     );
+        }
+
+        _context.EmployeeSurveyLinks.AddRange(newLinks);
+        await _context.SaveChangesAsync();
 
         return ServiceResult<EmptyResult>.Created();
     }
