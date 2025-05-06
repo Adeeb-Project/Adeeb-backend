@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+Makki/provide-rates
+
 using adeeb.Models;
 using AdeebBackend.Data;
 using AdeebBackend.Models;
@@ -53,6 +55,7 @@ namespace AdeebBackend.Data
             context.Questions.AddRange(questions);
             context.SaveChanges();
 
+
             // 2) Read all lines from Data/employees.csv in your project root
             var projectRoot = Directory.GetCurrentDirectory();
             var csvPath = Path.Combine(projectRoot, "Data", "employees.csv");
@@ -63,6 +66,7 @@ namespace AdeebBackend.Data
                             .Skip(1)
                             .Where(l => !string.IsNullOrWhiteSpace(l))
                             .ToArray();
+
 
             var rnd = new Random();
             var employees = new List<Employee>();
@@ -135,6 +139,7 @@ namespace AdeebBackend.Data
                 context.SurveyResponses.Add(sr);
                 context.SaveChanges();
 
+
                 foreach (var q in questions)
                 {
                     string ans;
@@ -159,6 +164,7 @@ namespace AdeebBackend.Data
                         Answer = ans
                     });
                 }
+
                 context.SaveChanges();
             }
         }

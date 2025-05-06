@@ -17,6 +17,7 @@ namespace adeeb.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionResponse> QuestionResponses { get; set; }
+        public DbSet<QuestionMcqOption> QuestionMcqOptions { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

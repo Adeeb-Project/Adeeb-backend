@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using AdeebBackend.Models;
 
 namespace adeeb.Models
 {
@@ -13,7 +14,10 @@ namespace adeeb.Models
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public QuestionType QuestionType { get; set; }
 
+
         public Survey Survey { get; set; }
+        public ICollection<QuestionMcqOption> Options { get; set; }
+
     }
 
     public enum QuestionType
