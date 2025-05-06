@@ -43,7 +43,7 @@ namespace AdeebBackend.Services
                 issuer: _issuer,
                 audience: _audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddHours(1), // Token valid for 1 hour
+                expires: DateTime.UtcNow.AddHours(100), // Token valid for 1 hour
                 signingCredentials: credentials
             );
 

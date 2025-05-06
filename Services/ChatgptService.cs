@@ -105,6 +105,7 @@ public class ChatGptService
                 If the reponses were numbers, write the average, the min, and the max. and a short summary analysis.
                 Do not write the question title in the answer and do not write any sort of template or boiler plate, just return your summary analysis answer as I would display it directly for customers.
                 Group the responses and analyze them under the question title.
+                Make it in paragraph style or add spacing between the paragraphs. We want it to be readable for an average human.
                 """
             ;
 

@@ -44,7 +44,7 @@ namespace adeeb.Controllers
                     Id = emp.Id,
                     FullName = emp.FullName,
                     Email = emp.Email,
-                    JoinDate = emp.JoinDate,
+                    JoinDate = emp.LeftDate,
                     Department = emp.Department,
                     Position = emp.Position,
                     PhoneNumber = emp.PhoneNumber,
@@ -88,7 +88,7 @@ namespace adeeb.Controllers
             {
                 FullName = employee.FullName,
                 Email = employee.Email,
-                JoinDate = employee.JoinDate,
+                LeftDate = employee.JoinDate,
                 Department = employee.Department,
                 Position = employee.Position,
                 PhoneNumber = employee.PhoneNumber,

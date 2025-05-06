@@ -89,4 +89,131 @@ public class CompaniesService
         });
     }
 
+    public async Task<ServiceResult<CompanyChartResponseDto>> GetCompanyChartAsync(
+    int companyId,
+    string period,
+    string graphType)
+    {
+        // 1. Historic total
+        var company = await _context.Companies.FindAsync(companyId)
+                      ?? throw new InvalidOperationException("Company not found");
+        int totalHistoric = company.TotalNumberOfEmployees;
+
+        // 2. Build full labels & both series
+        var (labels, fullTurnover, fullRetention)
+            = await BuildTimeSeriesAsync(companyId, totalHistoric, period);
+
+        // 3. Compute current snapshot (all-time) for donut
+        int leftAllTime = await _context.Employees
+            .Where(e => e.CompanyId == companyId && e.LeftDate != default)
+            .CountAsync();
+        double currentTurnover = totalHistoric > 0
+            ? Math.Round((double)leftAllTime / totalHistoric * 100, 2)
+            : 0;
+        double currentRetention = Math.Round(100 - currentTurnover, 2);
+
+        // 4. Prepare DTO
+        var dto = new CompanyChartResponseDto
+        {
+            Labels = (graphType == "donut")
+                ? new List<string> { "Current" }
+                : labels,
+
+            Data = graphType switch
+            {
+                "combined" or "bar" => new CompanySeries
+                {
+                    Turnover = fullTurnover,
+                    Retention = fullRetention
+                },
+                "turnover" => new CompanySeries { Turnover = fullTurnover },
+                "retention" => new CompanySeries { Retention = fullRetention },
+                _ => null
+            },
+
+            CurrentStatus = graphType == "donut"
+                ? new CompanySeries
+                {
+                    Turnover = new List<double> { currentTurnover },
+                    Retention = new List<double> { currentRetention }
+                }
+                : null,
+
+            LastUpdated = DateTime.UtcNow
+        };
+
+        return ServiceResult<CompanyChartResponseDto>.Ok(dto);
+    }
+
+    // Helper to build your quarterly/yearly/allTime arrays
+    private async Task<(List<string>, List<double>, List<double>)> BuildTimeSeriesAsync(
+        int companyId, int totalHistoric, string period)
+    {
+        var labels = new List<string>();
+        var turnover = new List<double>();
+        var retention = new List<double>();
+        DateTime now = DateTime.UtcNow;
+
+        if (period == "quarterly")
+        {
+            int year = now.Year;
+            for (int q = 1; q <= 4; q++)
+            {
+                var start = new DateTime(year, (q - 1) * 3 + 1, 1);
+                var end = start.AddMonths(3);
+                labels.Add($"Q{q} {year}");
+
+                int leftCount = await _context.Employees
+                    .Where(e => e.CompanyId == companyId
+                             && e.LeftDate >= start
+                             && e.LeftDate < end)
+                    .CountAsync();
+
+                double t = totalHistoric > 0
+                    ? Math.Round((double)leftCount / totalHistoric * 100, 2)
+                    : 0;
+                turnover.Add(t);
+                retention.Add(Math.Round(100 - t, 2));
+            }
+        }
+        else if (period == "yearly")
+        {
+            int currentYear = now.Year;
+            for (int y = currentYear - 4; y <= currentYear; y++)
+            {
+                var start = new DateTime(y, 1, 1);
+                var end = start.AddYears(1);
+                labels.Add(y.ToString());
+
+                int leftCount = await _context.Employees
+                    .Where(e => e.CompanyId == companyId
+                             && e.LeftDate >= start
+                             && e.LeftDate < end)
+                    .CountAsync();
+
+                double t = totalHistoric > 0
+                    ? Math.Round((double)leftCount / totalHistoric * 100, 2)
+                    : 0;
+                turnover.Add(t);
+                retention.Add(Math.Round(100 - t, 2));
+            }
+        }
+        else // allTime
+        {
+            labels.Add("All Time");
+            int leftCount = await _context.Employees
+                .Where(e => e.CompanyId == companyId
+                         && e.LeftDate != default)
+                .CountAsync();
+            double t = totalHistoric > 0
+                ? Math.Round((double)leftCount / totalHistoric * 100, 2)
+                : 0;
+            turnover.Add(t);
+            retention.Add(Math.Round(100 - t, 2));
+        }
+
+        return (labels, turnover, retention);
+    }
+
+
 }
