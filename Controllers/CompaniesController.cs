@@ -29,15 +29,17 @@ namespace AdeebBackend.Controllers
             return result.ToActionResult();
         }
 
-        // GET: api/companies/rates
-        [HttpGet("rates")]
+        [HttpGet("charts")]
         [Authorize]
-        public async Task<ActionResult> GetCompanyRates()
+        public async Task<ActionResult<CompanyChartResponseDto>> GetCharts(
+    [FromQuery] string period,
+    [FromQuery] string graphType)
         {
             var companyId = int.Parse(User.FindFirst("companyId")?.Value);
-            var result = await _companiesService.GetCompanyRates(companyId);
+            var result = await _companiesService.GetCompanyChartAsync(companyId, period, graphType);
             return result.ToActionResult();
         }
+
     }
 
 

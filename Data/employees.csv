@@ -1,0 +1,501 @@
+﻿Full Name,Email,Phone Number,Left Date,Department,Position,Company
+Khalifah Al-Anazi,khalifah.al-anazi@example.com,52212380,05/03/2025,Product Management,Product Manager,STC
+Sultan Al-Ghamdi,sultan.al-ghamdi@example.com,52918630,4/22/2025,Engineering,IT Specialist,Saudi Ports Authority
+Talha Al-Juhani,talha.al-juhani@example.com,55115291,4/22/2025,Information Technology,IT Specialist,Saudi Telecom Company
+Faisal Al-Anazi,faisal.al-anazi@example.com,51017299,4/13/2025,Legal,Procurement Specialist,Saudi Electricity Company
+Talal Al-Asmari,talal.al-asmari@example.com,52245408,04/01/2025,Procurement,Training Specialist,Alinma Bank
+Sultan Al-Buhairi,sultan.al-buhairi@example.com,52508121,3/31/2025,Engineering,Product Manager,SABIC
+Mishal Al-Asmari,mishal.al-asmari@example.com,57915382,3/27/2025,Logistics,Engineer,National Commercial Bank
+Bader Al-Zahrani,bader.al-zahrani@example.com,58661117,3/17/2025,Legal,Operations Specialist,Saudia
+Hisham Al-Othman,hisham.al-othman@example.com,55738923,03/04/2025,Research and Development,Sales Representative,National Commercial Bank
+Ammar Al-Dosari,ammar.al-dosari@example.com,52003041,2/27/2025,Procurement,Marketing Specialist,Mobily
+Saleh Al-Qahtani,saleh.al-qahtani@example.com,55948143,1/25/2025,Business Development,Senior Engineer,Saudi Electricity Company
+Zaid Al-Dosari,zaid.al-dosari@example.com,53371355,1/23/2025,Logistics,Accountant,STC
+Saeed Al-Harbi,saeed.al-harbi@example.com,58340417,1/15/2025,Logistics,Procurement Specialist,National Commercial Bank
+Khalid Al-Saud,khalid.al-saud@example.com,56091805,01/06/2025,Operations,Marketing Specialist,Saudi Electricity Company
+Saif Al-Buhairi,saif.al-buhairi@example.com,53696147,12/22/2024,Sales,Support Specialist,Saudi Aramco
+Sultan Al-Harbi,sultan.al-harbi@example.com,55316435,12/16/2024,Logistics,Training Specialist,National Commercial Bank
+Adel Al-Subaie,adel.al-subaie@example.com,55532719,12/09/2024,Finance,Customer Success Manager,Mobily
+Rashed Al-Mutairi,rashed.al-mutairi@example.com,51803480,12/06/2024,Operations,Senior Manager,National Commercial Bank
+Hani Al-Shammari,hani.al-shammari@example.com,59475468,11/29/2024,Legal,HR Specialist,Saudi Airlines
+Jaber Al-Zahrani,jaber.al-zahrani@example.com,58602034,11/25/2024,Product Management,Marketing Specialist,Saudi Ports Authority
+Saleh Al-Otaibi,saleh.al-otaibi@example.com,54489883,11/09/2024,Quality Assurance,Senior Engineer,STC
+Yousef Al-Rashid,yousef.al-rashid@example.com,53214214,11/05/2024,Training,Customer Success Manager,Alinma Bank
+Hani Al-Qahtani,hani.al-qahtani@example.com,56816081,10/31/2024,Marketing,Marketing Specialist,Saudi Electricity Company
+Abdulaziz Al-Othman,abdulaziz.al-othman@example.com,59743259,10/29/2024,Sales,Training Specialist,Alinma Bank
+Abdullah Al-Harbi,abdullah.al-harbi@example.com,52152890,9/29/2024,Legal,Senior Engineer,SABIC
+Abdulaziz Al-Zahrani,abdulaziz.al-zahrani@example.com,55659061,9/16/2024,Logistics,Training Specialist,Saudia
+Abdulaziz Al-Sharif,abdulaziz.al-sharif@example.com,56422955,09/10/2024,Business Development,IT Specialist,Alinma Bank
+Muath Al-Harbi,muath.al-harbi@example.com,51367788,8/31/2024,Marketing,Marketing Specialist,Almarai
+Adel Al-Juhani,adel.al-juhani@example.com,55152957,8/22/2024,Procurement,Business Analyst,SABIC
+Ayman Al-Qahtani,ayman.al-qahtani@example.com,55415301,8/13/2024,Quality Assurance,Business Analyst,Al Rajhi Bank
+Bader Al-Dosari,bader.al-dosari@example.com,52880161,08/06/2024,Research and Development,IT Specialist,Saudi Ports Authority
+Turki Al-Dosari,turki.al-dosari@example.com,56099988,08/04/2024,Research and Development,Customer Success Manager,Saudi Ports Authority
+Mansour Al-Khalid,mansour.al-khalid@example.com,59794062,7/31/2024,Human Resources,IT Specialist,STC
+Saeed Al-Subaie,saeed.al-subaie@example.com,57692717,07/07/2024,Customer Success,Marketing Specialist,Alinma Bank
+Omar Al-Harbi,omar.al-harbi@example.com,59654376,07/04/2024,Human Resources,Legal Advisor,Alinma Bank
+Yousef Al-Saud,yousef.al-saud@example.com,57636963,06/10/2024,Customer Support,Assistant Manager,Almarai
+Bader Al-Otaibi,bader.al-otaibi@example.com,51891729,06/06/2024,Finance,Business Analyst,National Commercial Bank
+Anas Al-Mutairi,anas.al-mutairi@example.com,56656463,5/18/2024,Research and Development,Procurement Specialist,Saudi Airlines
+Jaber Al-Mutairi,jaber.al-mutairi@example.com,56165643,5/15/2024,Finance,Sales Representative,Ma’aden
+Adel Al-Sharif,adel.al-sharif@example.com,52709805,05/11/2024,Marketing,Sales Representative,Al Rajhi Bank
+Ammar Al-Khalid,ammar.al-khalid@example.com,51954906,05/03/2024,Research and Development,Sales Representative,STC
+Zaid Al-Rashid,zaid.al-rashid@example.com,53483004,05/01/2024,Logistics,Manager,Saudia
+Turki Al-Qahtani,turki.al-qahtani@example.com,54366318,4/21/2024,Training,Customer Success Manager,Saudi Electricity Company
+Saleh Al-Otaibi,saleh.al-otaibi@example.com,53613558,04/10/2024,Sales,Business Analyst,Saudi Airlines
+Saeed Al-Juhani,saeed.al-juhani@example.com,54611491,04/04/2024,Customer Support,Legal Advisor,Mobily
+Omar Al-Harbi,omar.al-harbi@example.com,58047823,04/04/2024,Sales,Customer Success Manager,SABIC
+Zaid Al-Subaie,zaid.al-subaie@example.com,56619622,3/29/2024,Human Resources,Support Specialist,National Commercial Bank
+Saeed Al-Qahtani,saeed.al-qahtani@example.com,54516347,3/28/2024,Research and Development,Manager,Ma’aden
+Riyadh Al-Harbi,riyadh.al-harbi@example.com,58229476,3/22/2024,Information Technology,Software Engineer,Saudi Aramco
+Muath Al-Qahtan,muath.al-qahtan@example.com,55772131,3/15/2024,Human Resources,Senior Engineer,Saudi Telecom Company
+Yahya Al-Juhani,yahya.al-juhani@example.com,57850411,03/08/2024,Product Management,Manager,SABIC
+Hassan Al-Qahtani,hassan.al-qahtani@example.com,53539509,2/28/2024,Finance,Operations Specialist,National Commercial Bank
+Anas Al-Buhairi,anas.al-buhairi@example.com,58252906,2/26/2024,Business Development,Senior Manager,Ma’aden
+Jaber Al-Zahrani,jaber.al-zahrani@example.com,57787110,1/28/2024,Legal,IT Specialist,SABIC
+Anas Al-Asmari,anas.al-asmari@example.com,59328043,01/09/2024,Logistics,Accountant,Saudi Aramco
+Abdullah Al-Qahtan,abdullah.al-qahtan@example.com,57701652,01/06/2024,Research and Development,Legal Advisor,Alinma Bank
+Abdulrahman Al-Buhairi,abdulrahman.al-buhairi@example.com,56157219,01/05/2024,Customer Success,Quality Assurance Engineer,Mobily
+Talal Al-Rashid,talal.al-rashid@example.com,57928421,12/25/2023,Finance,Assistant Manager,National Commercial Bank
+Khalifah Al-Dosari,khalifah.al-dosari@example.com,56743414,12/20/2023,Customer Support,Quality Assurance Engineer,Saudia
+Mohammed Al-Harbi,mohammed.al-harbi@example.com,51604778,12/19/2023,Legal,Engineer,Saudi Ports Authority
+Saif Al-Buhairi,saif.al-buhairi@example.com,52058056,12/13/2023,Training,Quality Assurance Engineer,STC
+Sultan Al-Khalid,sultan.al-khalid@example.com,59604248,12/13/2023,Legal,Product Manager,Almarai
+Saud Al-Khalid,saud.al-khalid@example.com,52767868,12/12/2023,Customer Success,HR Specialist,Saudia
+Mazin Al-Rashid,mazin.al-rashid@example.com,55942120,12/01/2023,Information Technology,Customer Success Manager,Saudi Electricity Company
+Zaid Al-Shammari,zaid.al-shammari@example.com,55091956,11/29/2023,Customer Success,Customer Success Manager,Saudi Electricity Company
+Jaber Al-Ghamdi,jaber.al-ghamdi@example.com,55896105,11/09/2023,Customer Support,Software Engineer,Almarai
+Khalifah Al-Ghamdi,khalifah.al-ghamdi@example.com,53912019,11/05/2023,Operations,Product Manager,Ma’aden
+Ammar Al-Rashid,ammar.al-rashid@example.com,57958157,10/29/2023,Sales,Operations Specialist,SABIC
+Yahya Al-Qahtan,yahya.al-qahtan@example.com,59268751,10/27/2023,Training,Accountant,National Commercial Bank
+Turki Al-Otaibi,turki.al-otaibi@example.com,54024165,10/04/2023,Finance,HR Specialist,Saudi Ports Authority
+Rashed Al-Saud,rashed.al-saud@example.com,56735144,10/04/2023,Legal,Accountant,Al Rajhi Bank
+Saud Al-Rajhi,saud.al-rajhi@example.com,52673709,10/03/2023,Research and Development,Assistant Manager,Saudi Airlines
+Saeed Al-Othman,saeed.al-othman@example.com,57345381,10/02/2023,Engineering,Legal Advisor,Saudi Telecom Company
+Bader Al-Shammari,bader.al-shammari@example.com,55561276,9/23/2023,Business Development,Manager,Saudi Electricity Company
+Jaber Al-Harbi,jaber.al-harbi@example.com,59230234,9/20/2023,Training,Product Manager,National Commercial Bank
+Sultan Al-Asmari,sultan.al-asmari@example.com,55518432,9/17/2023,Procurement,Product Manager,Saudi Airlines
+Hani Al-Mutairi,hani.al-mutairi@example.com,52895837,09/10/2023,Training,HR Specialist,Alinma Bank
+Abdulaziz Al-Asmari,abdulaziz.al-asmari@example.com,53565923,09/09/2023,Human Resources,Manager,Alinma Bank
+Riyadh Al-Subaie,riyadh.al-subaie@example.com,58177122,09/08/2023,Business Development,IT Specialist,Mobily
+Mazin Al-Zahrani,mazin.al-zahrani@example.com,58595526,09/08/2023,Logistics,HR Specialist,Saudi Electricity Company
+Khalid Al-Anazi,khalid.al-anazi@example.com,54759879,09/06/2023,Information Technology,Product Manager,Al Rajhi Bank
+Ammar Al-Dosari,ammar.al-dosari@example.com,55253730,8/24/2023,Training,Sales Representative,Saudi Telecom Company
+Anas Al-Saud,anas.al-saud@example.com,51977499,8/17/2023,Human Resources,Accountant,National Commercial Bank
+Adel Al-Buhairi,adel.al-buhairi@example.com,55982136,08/12/2023,Customer Success,Assistant Manager,Saudi Airlines
+Jaber Al-Othman,jaber.al-othman@example.com,51680412,08/09/2023,Operations,Quality Assurance Engineer,Saudi Electricity Company
+Saleh Al-Othman,saleh.al-othman@example.com,51705527,08/06/2023,Marketing,Assistant Manager,Saudia
+Jaber Al-Anazi,jaber.al-anazi@example.com,54030980,08/01/2023,Procurement,HR Specialist,National Commercial Bank
+Saeed Al-Khalid,saeed.al-khalid@example.com,52825591,7/22/2023,Legal,Procurement Specialist,Alinma Bank
+Hani Al-Mutairi,hani.al-mutairi@example.com,53442747,7/17/2023,Customer Support,Training Specialist,Saudi Ports Authority
+Turki Al-Buhairi,turki.al-buhairi@example.com,52159584,07/10/2023,Design,Software Engineer,SABIC
+Yahya Al-Rajhi,yahya.al-rajhi@example.com,54671356,07/02/2023,Marketing,Training Specialist,Saudi Airlines
+Saeed Al-Ghamdi,saeed.al-ghamdi@example.com,59439170,6/21/2023,Customer Success,Senior Manager,Al Rajhi Bank
+Riyadh Al-Buhairi,riyadh.al-buhairi@example.com,53812462,6/21/2023,Business Development,Engineer,Almarai
+Khalid Al-Khalid,khalid.al-khalid@example.com,53561068,6/14/2023,Training,HR Specialist,National Commercial Bank
+Muath Al-Juhani,muath.al-juhani@example.com,52162385,6/13/2023,Business Development,Quality Assurance Engineer,National Commercial Bank
+Hani Al-Qahtani,hani.al-qahtani@example.com,54558505,06/04/2023,Finance,Engineer,Saudi Aramco
+Anas Al-Qahtani,anas.al-qahtani@example.com,53804551,5/23/2023,Information Technology,Operations Specialist,National Commercial Bank
+Jaber Al-Buhairi,jaber.al-buhairi@example.com,55351614,5/19/2023,Finance,Training Specialist,Almarai
+Majid Al-Sharif,majid.al-sharif@example.com,58248857,05/10/2023,Sales,Marketing Specialist,Alinma Bank
+Talha Al-Rashid,talha.al-rashid@example.com,52324036,05/09/2023,Research and Development,Customer Success Manager,Alinma Bank
+Abdullah Al-Ghamdi,abdullah.al-ghamdi@example.com,59584071,05/07/2023,Business Development,Marketing Specialist,Al Rajhi Bank
+Saeed Al-Qahtani,saeed.al-qahtani@example.com,52490570,05/06/2023,Operations,Customer Success Manager,Saudi Aramco
+Saleh Al-Buhairi,saleh.al-buhairi@example.com,51556511,4/24/2023,Engineering,HR Specialist,Saudi Ports Authority
+Hassan Al-Juhani,hassan.al-juhani@example.com,59602549,4/23/2023,Marketing,Procurement Specialist,Saudi Ports Authority
+Muath Al-Buhairi,muath.al-buhairi@example.com,54631975,04/06/2023,Customer Success,Legal Advisor,Saudi Ports Authority
+Riyadh Al-Faisal,riyadh.al-faisal@example.com,55844100,3/28/2023,Training,Procurement Specialist,SABIC
+Khalifah Al-Harbi,khalifah.al-harbi@example.com,56903861,3/27/2023,Business Development,Engineer,National Commercial Bank
+Khalid Al-Faisal,khalid.al-faisal@example.com,56508619,3/26/2023,Marketing,Accountant,Saudia
+Hani Al-Asmari,hani.al-asmari@example.com,59228373,3/22/2023,Training,Assistant Manager,Alinma Bank
+Yahya Al-Anazi,yahya.al-anazi@example.com,59503686,03/11/2023,Customer Success,Legal Advisor,Ma’aden
+Abdulaziz Al-Anazi,abdulaziz.al-anazi@example.com,58219026,03/10/2023,Logistics,Sales Representative,National Commercial Bank
+Ammar Al-Shammari,ammar.al-shammari@example.com,53969158,03/03/2023,Information Technology,Training Specialist,Saudi Airlines
+Nawaf Al-Ghamdi,nawaf.al-ghamdi@example.com,55223765,02/04/2023,Training,Support Specialist,Mobily
+Rayan Al-Subaie,rayan.al-subaie@example.com,53835603,1/23/2023,Finance,Support Specialist,Saudi Telecom Company
+Hisham Al-Othman,hisham.al-othman@example.com,54660303,1/13/2023,Legal,Legal Advisor,STC
+Turki Al-Asmari,turki.al-asmari@example.com,56838889,01/02/2023,Quality Assurance,Senior Engineer,Saudia
+Mansour Al-Qahtani,mansour.al-qahtani@example.com,59585706,12/07/2022,Marketing,Software Engineer,Saudi Airlines
+Abdulrahman Al-Qahtan,abdulrahman.al-qahtan@example.com,58716630,12/06/2022,Business Development,Manager,National Commercial Bank
+Riyadh Al-Rashid,riyadh.al-rashid@example.com,53469479,12/03/2022,Training,Business Analyst,Saudi Airlines
+Rashed Al-Otaibi,rashed.al-otaibi@example.com,55600388,11/28/2022,Design,Procurement Specialist,Al Rajhi Bank
+Abdullah Al-Shammari,abdullah.al-shammari@example.com,51131469,11/14/2022,Procurement,Procurement Specialist,National Commercial Bank
+Adel Al-Rajhi,adel.al-rajhi@example.com,56295227,11/10/2022,Human Resources,IT Specialist,National Commercial Bank
+Saif Al-Othman,saif.al-othman@example.com,52664191,11/06/2022,Business Development,Operations Specialist,Saudi Electricity Company
+Mazin Al-Khalid,mazin.al-khalid@example.com,54552826,11/05/2022,Procurement,Legal Advisor,Al Rajhi Bank
+Nawaf Al-Qahtan,nawaf.al-qahtan@example.com,59446361,10/22/2022,Procurement,Product Manager,Saudia
+Ayman Al-Khalid,ayman.al-khalid@example.com,58643468,10/18/2022,Business Development,Operations Specialist,Mobily
+Fahad Al-Qahtani,fahad.al-qahtani@example.com,53521322,10/04/2022,Engineering,Sales Representative,Al Rajhi Bank
+Saif Al-Subaie,saif.al-subaie@example.com,58532882,10/03/2022,Operations,Manager,Saudi Electricity Company
+Abdullah Al-Ghamdi,abdullah.al-ghamdi@example.com,53154378,9/30/2022,Marketing,Senior Manager,SABIC
+Anas Al-Asmari,anas.al-asmari@example.com,54531140,9/25/2022,Operations,Senior Manager,Saudi Aramco
+Talal Al-Sharif,talal.al-sharif@example.com,52718000,9/20/2022,Engineering,Manager,Mobily
+Talha Al-Othman,talha.al-othman@example.com,52618493,9/19/2022,Product Management,Sales Representative,Almarai
+Yahya Al-Othman,yahya.al-othman@example.com,54767753,9/14/2022,Sales,Operations Specialist,Almarai
+Faisal Al-Mutairi,faisal.al-mutairi@example.com,58039416,9/13/2022,Logistics,Marketing Specialist,Ma’aden
+Muath Al-Juhani,muath.al-juhani@example.com,54978364,8/31/2022,Marketing,Senior Engineer,Saudi Telecom Company
+Yahya Al-Qahtani,yahya.al-qahtani@example.com,57245061,8/25/2022,Human Resources,Support Specialist,SABIC
+Yahya Al-Buhairi,yahya.al-buhairi@example.com,52333182,8/22/2022,Research and Development,Legal Advisor,Alinma Bank
+Saud Al-Rajhi,saud.al-rajhi@example.com,52990120,8/15/2022,Customer Support,Customer Success Manager,Saudi Telecom Company
+Saud Al-Faisal,saud.al-faisal@example.com,54844111,08/11/2022,Engineering,Assistant Manager,Almarai
+Mishal Al-Qahtan,mishal.al-qahtan@example.com,51159868,08/02/2022,Logistics,Senior Engineer,Al Rajhi Bank
+Majid Al-Sharif,majid.al-sharif@example.com,55551353,7/31/2022,Legal,Legal Advisor,Saudi Telecom Company
+Saeed Al-Mutairi,saeed.al-mutairi@example.com,51520174,7/18/2022,Research and Development,HR Specialist,Saudia
+Rashed Al-Mutairi,rashed.al-mutairi@example.com,51074111,07/02/2022,Quality Assurance,Software Engineer,Mobily
+Abdulrahman Al-Harbi,abdulrahman.al-harbi@example.com,56350638,6/29/2022,Marketing,Engineer,Ma’aden
+Majid Al-Qahtani,majid.al-qahtani@example.com,59760789,6/25/2022,Sales,Customer Success Manager,National Commercial Bank
+Mishal Al-Dosari,mishal.al-dosari@example.com,55575196,6/24/2022,Business Development,Customer Success Manager,Saudi Aramco
+Khalid Al-Qahtan,khalid.al-qahtan@example.com,53499428,06/10/2022,Product Management,Customer Success Manager,Al Rajhi Bank
+Khalifah Al-Asmari,khalifah.al-asmari@example.com,59295540,06/06/2022,Product Management,IT Specialist,Ma’aden
+Turki Al-Faisal,turki.al-faisal@example.com,53179270,06/04/2022,Quality Assurance,Quality Assurance Engineer,STC
+Mishal Al-Harbi,mishal.al-harbi@example.com,58241573,05/08/2022,Design,IT Specialist,Ma’aden
+Yousef Al-Othman,yousef.al-othman@example.com,53960614,05/04/2022,Legal,Training Specialist,Almarai
+Turki Al-Asmari,turki.al-asmari@example.com,57295880,4/23/2022,Design,Manager,Saudi Telecom Company
+Riyadh Al-Qahtani,riyadh.al-qahtani@example.com,58878923,4/16/2022,Logistics,Engineer,Saudi Ports Authority
+Majid Al-Subaie,majid.al-subaie@example.com,53123638,4/13/2022,Marketing,Quality Assurance Engineer,Saudi Telecom Company
+Saeed Al-Zahrani,saeed.al-zahrani@example.com,52244482,04/07/2022,Quality Assurance,Sales Representative,Saudia
+Saleh Al-Dosari,saleh.al-dosari@example.com,58480294,04/03/2022,Design,Customer Success Manager,Saudi Airlines
+Sultan Al-Othman,sultan.al-othman@example.com,56321653,3/30/2022,Legal,Quality Assurance Engineer,Saudia
+Faisal Al-Zahrani,faisal.al-zahrani@example.com,53521405,3/28/2022,Training,Senior Engineer,Saudia
+Hamad Al-Qahtani,hamad.al-qahtani@example.com,58583724,3/24/2022,Customer Support,HR Specialist,Ma’aden
+Turki Al-Harbi,turki.al-harbi@example.com,52058679,03/11/2022,Operations,Procurement Specialist,Ma’aden
+Hamad Al-Faisal,hamad.al-faisal@example.com,52214891,03/10/2022,Research and Development,Senior Manager,Saudi Aramco
+Abdulrahman Al-Othman,abdulrahman.al-othman@example.com,56892737,03/01/2022,Legal,Procurement Specialist,Saudi Ports Authority
+Saleh Al-Sharif,saleh.al-sharif@example.com,52074559,2/23/2022,Human Resources,Sales Representative,Ma’aden
+Zaid Al-Qahtani,zaid.al-qahtani@example.com,54539568,2/17/2022,Logistics,Assistant Manager,Saudi Airlines
+Abdulaziz Al-Othman,abdulaziz.al-othman@example.com,51048295,2/16/2022,Engineering,Legal Advisor,Saudi Telecom Company
+Abdullah Al-Asmari,abdullah.al-asmari@example.com,59802393,1/27/2022,Logistics,Sales Representative,Saudi Ports Authority
+Khalid Al-Shammari,khalid.al-shammari@example.com,52453219,1/24/2022,Business Development,Business Analyst,Saudi Electricity Company
+Anas Al-Dosari,anas.al-dosari@example.com,59508689,01/08/2022,Sales,Accountant,Saudi Ports Authority
+Turki Al-Qahtani,turki.al-qahtani@example.com,52660606,12/29/2021,Quality Assurance,Quality Assurance Engineer,Almarai
+Anas Al-Asmari,anas.al-asmari@example.com,51161904,12/14/2021,Quality Assurance,Sales Representative,SABIC
+Hassan Al-Othman,hassan.al-othman@example.com,58480867,12/14/2021,Information Technology,Product Manager,Saudi Telecom Company
+Abdullah Al-Juhani,abdullah.al-juhani@example.com,58362658,11/16/2021,Quality Assurance,Senior Manager,Saudi Ports Authority
+Turki Al-Faisal,turki.al-faisal@example.com,58000041,11/03/2021,Quality Assurance,Business Analyst,Saudi Telecom Company
+Sultan Al-Buhairi,sultan.al-buhairi@example.com,51792282,10/12/2021,Design,Software Engineer,National Commercial Bank
+Abdulrahman Al-Ghamdi,abdulrahman.al-ghamdi@example.com,55008347,10/11/2021,Business Development,Marketing Specialist,Alinma Bank
+Rayan Al-Zahrani,rayan.al-zahrani@example.com,55769290,10/08/2021,Engineering,Customer Success Manager,SABIC
+Abdulrahman Al-Saud,abdulrahman.al-saud@example.com,56758475,10/06/2021,Customer Support,Training Specialist,Saudi Ports Authority
+Talha Al-Dosari,talha.al-dosari@example.com,55656627,9/13/2021,Marketing,Senior Engineer,Al Rajhi Bank
+Saud Al-Subaie,saud.al-subaie@example.com,56174664,09/04/2021,Business Development,Procurement Specialist,Al Rajhi Bank
+Mishal Al-Mutairi,mishal.al-mutairi@example.com,54629112,8/25/2021,Operations,Accountant,Saudi Aramco
+Talal Al-Qahtan,talal.al-qahtan@example.com,54808414,8/21/2021,Marketing,Procurement Specialist,Al Rajhi Bank
+Bader Al-Juhani,bader.al-juhani@example.com,52665234,8/21/2021,Procurement,IT Specialist,Saudi Telecom Company
+Abdulrahman Al-Otaibi,abdulrahman.al-otaibi@example.com,54033866,8/19/2021,Design,Senior Engineer,Saudi Aramco
+Hani Al-Qahtan,hani.al-qahtan@example.com,54885923,8/13/2021,Product Management,Customer Success Manager,Mobily
+Talal Al-Saud,talal.al-saud@example.com,56058077,08/12/2021,Engineering,Quality Assurance Engineer,STC
+Talha Al-Ghamdi,talha.al-ghamdi@example.com,59021720,08/01/2021,Customer Support,Senior Engineer,Al Rajhi Bank
+Majid Al-Rashid,majid.al-rashid@example.com,54074704,7/29/2021,Sales,Customer Success Manager,National Commercial Bank
+Mohammed Al-Ghamdi,mohammed.al-ghamdi@example.com,51765471,7/28/2021,Business Development,Sales Representative,Saudia
+Sultan Al-Buhairi,sultan.al-buhairi@example.com,54500581,7/16/2021,Operations,Support Specialist,Mobily
+Mazin Al-Mutairi,mazin.al-mutairi@example.com,53955222,07/12/2021,Research and Development,IT Specialist,Saudi Telecom Company
+Yousef Al-Ghamdi,yousef.al-ghamdi@example.com,56390994,07/10/2021,Product Management,Legal Advisor,Saudi Telecom Company
+Zaid Al-Anazi,zaid.al-anazi@example.com,52976032,07/03/2021,Finance,Senior Engineer,SABIC
+Ammar Al-Shammari,ammar.al-shammari@example.com,55439986,07/01/2021,Operations,Quality Assurance Engineer,Alinma Bank
+Khalifah Al-Rajhi,khalifah.al-rajhi@example.com,51901710,6/25/2021,Human Resources,Procurement Specialist,Saudi Electricity Company
+Sultan Al-Qahtani,sultan.al-qahtani@example.com,53712703,6/23/2021,Quality Assurance,IT Specialist,Almarai
+Ayman Al-Anazi,ayman.al-anazi@example.com,56528970,6/22/2021,Marketing,Customer Success Manager,Mobily
+Fahad Al-Buhairi,fahad.al-buhairi@example.com,56258677,06/07/2021,Sales,Marketing Specialist,Almarai
+Khalifah Al-Anazi,khalifah.al-anazi@example.com,59141282,5/17/2021,Design,IT Specialist,Al Rajhi Bank
+Saud Al-Dosari,saud.al-dosari@example.com,56565689,5/17/2021,Logistics,Accountant,Ma’aden
+Anas Al-Mutairi,anas.al-mutairi@example.com,55542843,05/12/2021,Information Technology,Senior Manager,Saudi Electricity Company
+Nawaf Al-Saud,nawaf.al-saud@example.com,54624928,05/08/2021,Finance,Legal Advisor,Alinma Bank
+Ayman Al-Rajhi,ayman.al-rajhi@example.com,52202084,05/08/2021,Sales,Support Specialist,STC
+Saeed Al-Harbi,saeed.al-harbi@example.com,56488002,4/29/2021,Research and Development,IT Specialist,Al Rajhi Bank
+Yahya Al-Mutairi,yahya.al-mutairi@example.com,51601956,04/10/2021,Operations,Legal Advisor,SABIC
+Rayan Al-Anazi,rayan.al-anazi@example.com,59106257,3/30/2021,Customer Success,Support Specialist,SABIC
+Mishal Al-Dosari,mishal.al-dosari@example.com,59026840,3/29/2021,Customer Support,Accountant,Saudi Telecom Company
+Talal Al-Rashid,talal.al-rashid@example.com,55662443,3/14/2021,Sales,HR Specialist,Saudi Telecom Company
+Rashed Al-Otaibi,rashed.al-otaibi@example.com,59175837,03/12/2021,Sales,Senior Manager,SABIC
+Mansour Al-Otaibi,mansour.al-otaibi@example.com,52531375,03/08/2021,Quality Assurance,Business Analyst,Saudi Telecom Company
+Zaid Al-Subaie,zaid.al-subaie@example.com,51442224,03/06/2021,Human Resources,Procurement Specialist,SABIC
+Abdullah Al-Subaie,abdullah.al-subaie@example.com,58621432,2/21/2021,Customer Support,Senior Manager,SABIC
+Zaid Al-Zahrani,zaid.al-zahrani@example.com,53378159,2/21/2021,Human Resources,Senior Manager,Ma’aden
+Sultan Al-Othman,sultan.al-othman@example.com,51902014,02/06/2021,Design,Legal Advisor,Al Rajhi Bank
+Khalid Al-Qahtani,khalid.al-qahtani@example.com,54305837,01/11/2021,Procurement,Training Specialist,Saudi Telecom Company
+Yahya Al-Zahrani,yahya.al-zahrani@example.com,53957889,01/11/2021,Product Management,IT Specialist,Saudi Ports Authority
+Riyadh Al-Qahtan,riyadh.al-qahtan@example.com,59356159,01/09/2021,Product Management,Training Specialist,Saudia
+Mansour Al-Rashid,mansour.al-rashid@example.com,55251221,01/01/2021,Business Development,Senior Manager,Al Rajhi Bank
+Omar Al-Asmari,omar.al-asmari@example.com,52342837,12/28/2020,Finance,Marketing Specialist,Saudia
+Hamad Al-Harbi,hamad.al-harbi@example.com,56724773,12/12/2020,Marketing,Legal Advisor,Mobily
+Nawaf Al-Qahtani,nawaf.al-qahtani@example.com,52394674,12/05/2020,Operations,Support Specialist,Saudi Ports Authority
+Mohammed Al-Mutairi,mohammed.al-mutairi@example.com,56232655,12/02/2020,Procurement,HR Specialist,Mobily
+Hassan Al-Ghamdi,hassan.al-ghamdi@example.com,52898033,11/30/2020,Customer Success,Legal Advisor,Saudia
+Khalid Al-Zahrani,khalid.al-zahrani@example.com,52802806,11/26/2020,Research and Development,Customer Success Manager,STC
+Fahad Al-Sharif,fahad.al-sharif@example.com,53289902,11/21/2020,Sales,Operations Specialist,Al Rajhi Bank
+Ammar Al-Rashid,ammar.al-rashid@example.com,58201171,11/17/2020,Product Management,Engineer,Saudi Aramco
+Saif Al-Zahrani,saif.al-zahrani@example.com,52537341,11/12/2020,Customer Success,Operations Specialist,Mobily
+Turki Al-Saud,turki.al-saud@example.com,59936232,11/11/2020,Operations,Procurement Specialist,Saudi Telecom Company
+Hamad Al-Anazi,hamad.al-anazi@example.com,56984927,10/27/2020,Logistics,Operations Specialist,National Commercial Bank
+Jaber Al-Mutairi,jaber.al-mutairi@example.com,52149607,10/25/2020,Operations,HR Specialist,National Commercial Bank
+Khalifah Al-Khalid,khalifah.al-khalid@example.com,54984845,10/25/2020,Design,Legal Advisor,Mobily
+Omar Al-Mutairi,omar.al-mutairi@example.com,51496259,10/18/2020,Business Development,Support Specialist,SABIC
+Saif Al-Khalid,saif.al-khalid@example.com,56291762,10/15/2020,Design,IT Specialist,Alinma Bank
+Mansour Al-Sharif,mansour.al-sharif@example.com,59564719,10/03/2020,Quality Assurance,Quality Assurance Engineer,Saudi Aramco
+Faisal Al-Khalid,faisal.al-khalid@example.com,53490556,9/18/2020,Legal,Legal Advisor,Saudi Telecom Company
+Nawaf Al-Saud,nawaf.al-saud@example.com,55176465,09/08/2020,Quality Assurance,HR Specialist,Ma’aden
+Majid Al-Anazi,majid.al-anazi@example.com,54271603,8/26/2020,Sales,Manager,Ma’aden
+Adel Al-Sharif,adel.al-sharif@example.com,53829461,8/18/2020,Customer Support,IT Specialist,Saudi Electricity Company
+Saif Al-Saud,saif.al-saud@example.com,57782506,8/18/2020,Procurement,Support Specialist,STC
+Riyadh Al-Othman,riyadh.al-othman@example.com,54044102,8/14/2020,Human Resources,Accountant,Mobily
+Fahad Al-Saud,fahad.al-saud@example.com,56399126,08/05/2020,Information Technology,Marketing Specialist,Alinma Bank
+Khalifah Al-Mutairi,khalifah.al-mutairi@example.com,56153976,7/24/2020,Quality Assurance,Business Analyst,Ma’aden
+Saif Al-Othman,saif.al-othman@example.com,54914987,07/12/2020,Training,IT Specialist,STC
+Khalifah Al-Juhani,khalifah.al-juhani@example.com,55373491,07/08/2020,Quality Assurance,Support Specialist,Alinma Bank
+Mansour Al-Otaibi,mansour.al-otaibi@example.com,52563816,07/07/2020,Procurement,Operations Specialist,Alinma Bank
+Khalifah Al-Harbi,khalifah.al-harbi@example.com,59956674,07/07/2020,Business Development,Accountant,Ma’aden
+Khalifah Al-Asmari,khalifah.al-asmari@example.com,56558694,07/01/2020,Human Resources,Procurement Specialist,Mobily
+Mishal Al-Faisal,mishal.al-faisal@example.com,53557964,06/11/2020,Information Technology,Support Specialist,Al Rajhi Bank
+Bader Al-Subaie,bader.al-subaie@example.com,54152488,06/08/2020,Product Management,IT Specialist,Saudi Telecom Company
+Saud Al-Rajhi,saud.al-rajhi@example.com,59132744,06/02/2020,Operations,Training Specialist,Almarai
+Khalifah Al-Mutairi,khalifah.al-mutairi@example.com,58347488,05/11/2020,Legal,Product Manager,SABIC
+Majid Al-Khalid,majid.al-khalid@example.com,54644429,05/08/2020,Product Management,Product Manager,STC
+Hani Al-Saud,hani.al-saud@example.com,55018412,4/25/2020,Finance,HR Specialist,Mobily
+Rayan Al-Qahtan,rayan.al-qahtan@example.com,51084738,4/20/2020,Design,Manager,National Commercial Bank
+Ayman Al-Anazi,ayman.al-anazi@example.com,59848322,4/17/2020,Customer Support,HR Specialist,Alinma Bank
+Adel Al-Rajhi,adel.al-rajhi@example.com,55094131,04/12/2020,Logistics,Accountant,Saudi Electricity Company
+Turki Al-Othman,turki.al-othman@example.com,59707652,04/07/2020,Human Resources,Senior Manager,Saudi Electricity Company
+Yahya Al-Zahrani,yahya.al-zahrani@example.com,51885436,04/06/2020,Finance,Procurement Specialist,Saudi Ports Authority
+Rashed Al-Shammari,rashed.al-shammari@example.com,51760288,3/25/2020,Design,Senior Engineer,Saudi Airlines
+Rayan Al-Zahrani,rayan.al-zahrani@example.com,57850630,3/14/2020,Operations,IT Specialist,SABIC
+Khalid Al-Sharif,khalid.al-sharif@example.com,59466669,03/07/2020,Research and Development,Customer Success Manager,SABIC
+Abdulaziz Al-Juhani,abdulaziz.al-juhani@example.com,51784231,03/04/2020,Customer Success,Marketing Specialist,Mobily
+Hisham Al-Mutairi,hisham.al-mutairi@example.com,59746680,1/25/2020,Marketing,Senior Manager,Saudi Airlines
+Saeed Al-Shammari,saeed.al-shammari@example.com,56669507,1/18/2020,Operations,Support Specialist,Saudi Aramco
+Khalid Al-Faisal,khalid.al-faisal@example.com,56158531,01/12/2020,Marketing,Procurement Specialist,National Commercial Bank
+Jaber Al-Zahrani,jaber.al-zahrani@example.com,57070726,12/19/2019,Business Development,Customer Success Manager,Ma’aden
+Abdullah Al-Rajhi,abdullah.al-rajhi@example.com,51652384,12/01/2019,Research and Development,Quality Assurance Engineer,Mobily
+Majid Al-Rashid,majid.al-rashid@example.com,54635066,11/25/2019,Design,Business Analyst,Al Rajhi Bank
+Majid Al-Anazi,majid.al-anazi@example.com,59575157,11/24/2019,Information Technology,Legal Advisor,Saudi Electricity Company
+Khalid Al-Qahtani,khalid.al-qahtani@example.com,51229072,11/24/2019,Quality Assurance,HR Specialist,Almarai
+Abdullah Al-Qahtani,abdullah.al-qahtani@example.com,51759719,11/18/2019,Design,Engineer,National Commercial Bank
+Fahad Al-Shammari,fahad.al-shammari@example.com,57838157,11/14/2019,Quality Assurance,Software Engineer,Alinma Bank
+Hamad Al-Mutairi,hamad.al-mutairi@example.com,53686987,11/13/2019,Engineering,Quality Assurance Engineer,Alinma Bank
+Hamad Al-Sharif,hamad.al-sharif@example.com,54838661,10/13/2019,Legal,Product Manager,National Commercial Bank
+Zaid Al-Qahtani,zaid.al-qahtani@example.com,58235428,10/09/2019,Quality Assurance,Training Specialist,STC
+Sultan Al-Dosari,sultan.al-dosari@example.com,56665798,10/03/2019,Customer Support,Sales Representative,STC
+Hassan Al-Saud,hassan.al-saud@example.com,55381890,9/16/2019,Engineering,Software Engineer,National Commercial Bank
+Riyadh Al-Otaibi,riyadh.al-otaibi@example.com,55385384,09/04/2019,Logistics,IT Specialist,Saudi Electricity Company
+Zaid Al-Mutairi,zaid.al-mutairi@example.com,57974791,09/03/2019,Product Management,Procurement Specialist,SABIC
+Saleh Al-Shammari,saleh.al-shammari@example.com,56374670,09/03/2019,Quality Assurance,Accountant,Almarai
+Majid Al-Khalid,majid.al-khalid@example.com,52286877,09/01/2019,Training,Procurement Specialist,Saudi Electricity Company
+Riyadh Al-Dosari,riyadh.al-dosari@example.com,54573042,8/28/2019,Logistics,Procurement Specialist,National Commercial Bank
+Muath Al-Shammari,muath.al-shammari@example.com,57567215,8/18/2019,Legal,Sales Representative,Al Rajhi Bank
+Sultan Al-Zahrani,sultan.al-zahrani@example.com,53775233,08/07/2019,Customer Support,HR Specialist,Alinma Bank
+Bader Al-Qahtan,bader.al-qahtan@example.com,54618034,08/04/2019,Human Resources,Software Engineer,Mobily
+Hassan Al-Shammari,hassan.al-shammari@example.com,53659161,7/25/2019,Marketing,Operations Specialist,Almarai
+Sultan Al-Otaibi,sultan.al-otaibi@example.com,59403871,7/15/2019,Procurement,Software Engineer,Saudi Aramco
+Adel Al-Dosari,adel.al-dosari@example.com,52705718,6/24/2019,Customer Success,Legal Advisor,Saudi Telecom Company
+Anas Al-Othman,anas.al-othman@example.com,53927462,6/21/2019,Customer Support,Engineer,Almarai
+Hisham Al-Zahrani,hisham.al-zahrani@example.com,58140659,6/15/2019,Customer Support,Senior Engineer,SABIC
+Mansour Al-Qahtan,mansour.al-qahtan@example.com,53861371,5/21/2019,Customer Support,Business Analyst,Saudi Ports Authority
+Bader Al-Khalid,bader.al-khalid@example.com,56124742,5/16/2019,Finance,Support Specialist,Almarai
+Yousef Al-Othman,yousef.al-othman@example.com,52429192,5/15/2019,Marketing,IT Specialist,Saudi Aramco
+Saif Al-Subaie,saif.al-subaie@example.com,52096796,05/06/2019,Research and Development,Assistant Manager,SABIC
+Zaid Al-Zahrani,zaid.al-zahrani@example.com,53166277,4/29/2019,Operations,HR Specialist,SABIC
+Adel Al-Qahtani,adel.al-qahtani@example.com,59791970,4/25/2019,Design,Manager,Mobily
+Saud Al-Saud,saud.al-saud@example.com,51276629,4/22/2019,Operations,HR Specialist,Al Rajhi Bank
+Talal Al-Ghamdi,talal.al-ghamdi@example.com,51460943,4/20/2019,Engineering,Support Specialist,Saudi Aramco
+Khalifah Al-Sharif,khalifah.al-sharif@example.com,56373263,04/08/2019,Business Development,Senior Engineer,Mobily
+Khalid Al-Zahrani,khalid.al-zahrani@example.com,53711063,3/21/2019,Customer Success,Manager,Saudi Electricity Company
+Riyadh Al-Ghamdi,riyadh.al-ghamdi@example.com,59105232,3/19/2019,Sales,Software Engineer,National Commercial Bank
+Mansour Al-Otaibi,mansour.al-otaibi@example.com,56946409,3/19/2019,Engineering,Product Manager,Al Rajhi Bank
+Sultan Al-Shammari,sultan.al-shammari@example.com,51439519,3/17/2019,Research and Development,HR Specialist,National Commercial Bank
+Fahad Al-Qahtani,fahad.al-qahtani@example.com,54957699,3/16/2019,Engineering,Support Specialist,Saudi Airlines
+Abdulaziz Al-Saud,abdulaziz.al-saud@example.com,59472189,3/13/2019,Customer Success,Product Manager,Mobily
+Bader Al-Shammari,bader.al-shammari@example.com,59725676,2/22/2019,Legal,Accountant,Saudi Airlines
+Khalifah Al-Harbi,khalifah.al-harbi@example.com,55300412,2/18/2019,Training,Support Specialist,Mobily
+Abdulrahman Al-Ghamdi,abdulrahman.al-ghamdi@example.com,55755808,02/09/2019,Quality Assurance,Training Specialist,STC
+Turki Al-Khalid,turki.al-khalid@example.com,52206245,1/30/2019,Sales,Assistant Manager,STC
+Yousef Al-Sharif,yousef.al-sharif@example.com,58927312,1/21/2019,Quality Assurance,Legal Advisor,Al Rajhi Bank
+Talha Al-Rajhi,talha.al-rajhi@example.com,57333001,12/31/2018,Design,HR Specialist,Saudi Airlines
+Mishal Al-Khalid,mishal.al-khalid@example.com,59057915,12/27/2018,Quality Assurance,HR Specialist,Saudi Ports Authority
+Ayman Al-Rajhi,ayman.al-rajhi@example.com,55818533,12/09/2018,Human Resources,Sales Representative,Saudi Telecom Company
+Abdulrahman Al-Mutairi,abdulrahman.al-mutairi@example.com,53140521,12/01/2018,Customer Support,Engineer,Alinma Bank
+Talal Al-Dosari,talal.al-dosari@example.com,59455179,11/18/2018,Design,Software Engineer,Al Rajhi Bank
+Majid Al-Rashid,majid.al-rashid@example.com,57287491,11/12/2018,Business Development,Training Specialist,National Commercial Bank
+Khalifah Al-Rajhi,khalifah.al-rajhi@example.com,58791845,10/26/2018,Customer Support,Support Specialist,Ma’aden
+Rashed Al-Zahrani,rashed.al-zahrani@example.com,58848367,10/12/2018,Legal,Legal Advisor,National Commercial Bank
+Abdulrahman Al-Khalid,abdulrahman.al-khalid@example.com,55714594,10/11/2018,Customer Support,Senior Manager,Alinma Bank
+Mansour Al-Buhairi,mansour.al-buhairi@example.com,51272787,9/28/2018,Finance,Business Analyst,Saudi Aramco
+Ayman Al-Harbi,ayman.al-harbi@example.com,59075268,9/21/2018,Design,Customer Success Manager,Saudi Telecom Company
+Saeed Al-Mutairi,saeed.al-mutairi@example.com,57030779,09/10/2018,Logistics,Support Specialist,Saudi Airlines
+Rashed Al-Othman,rashed.al-othman@example.com,59230213,09/06/2018,Customer Support,IT Specialist,Saudia
+Majid Al-Sharif,majid.al-sharif@example.com,52855212,09/02/2018,Customer Support,Quality Assurance Engineer,STC
+Mazin Al-Ghamdi,mazin.al-ghamdi@example.com,55274539,09/01/2018,Quality Assurance,Training Specialist,Almarai
+Saleh Al-Juhani,saleh.al-juhani@example.com,58474907,8/24/2018,Legal,Accountant,SABIC
+Omar Al-Dosari,omar.al-dosari@example.com,54783764,8/18/2018,Design,Support Specialist,Saudi Ports Authority
+Omar Al-Harbi,omar.al-harbi@example.com,52891911,8/16/2018,Design,Software Engineer,Saudia
+Abdulaziz Al-Othman,abdulaziz.al-othman@example.com,54807821,08/11/2018,Customer Support,Accountant,Saudi Telecom Company
+Fahad Al-Subaie,fahad.al-subaie@example.com,52861794,08/09/2018,Finance,Business Analyst,Alinma Bank
+Zaid Al-Qahtan,zaid.al-qahtan@example.com,51578212,08/05/2018,Research and Development,HR Specialist,Almarai
+Saud Al-Otaibi,saud.al-otaibi@example.com,55821899,08/04/2018,Research and Development,Product Manager,Saudi Telecom Company
+Anas Al-Buhairi,anas.al-buhairi@example.com,55463999,7/26/2018,Business Development,Business Analyst,STC
+Mazin Al-Ghamdi,mazin.al-ghamdi@example.com,51222249,7/24/2018,Sales,Engineer,Saudi Airlines
+Saud Al-Buhairi,saud.al-buhairi@example.com,53808302,07/01/2018,Finance,Engineer,Almarai
+Khalifah Al-Qahtani,khalifah.al-qahtani@example.com,52387691,6/25/2018,Engineering,Legal Advisor,Alinma Bank
+Anas Al-Ghamdi,anas.al-ghamdi@example.com,51008056,06/02/2018,Design,Sales Representative,Saudi Telecom Company
+Hisham Al-Rashid,hisham.al-rashid@example.com,59776819,06/02/2018,Logistics,Training Specialist,Ma’aden
+Majid Al-Mutairi,majid.al-mutairi@example.com,52839750,5/23/2018,Product Management,Accountant,SABIC
+Turki Al-Saud,turki.al-saud@example.com,53671026,5/22/2018,Finance,Software Engineer,Saudi Aramco
+Abdulrahman Al-Qahtan,abdulrahman.al-qahtan@example.com,53532617,05/11/2018,Business Development,Legal Advisor,Mobily
+Saif Al-Zahrani,saif.al-zahrani@example.com,52200240,05/10/2018,Information Technology,Software Engineer,Alinma Bank
+Anas Al-Qahtan,anas.al-qahtan@example.com,55673099,05/08/2018,Legal,IT Specialist,Saudi Telecom Company
+Mansour Al-Faisal,mansour.al-faisal@example.com,57296594,4/30/2018,Quality Assurance,IT Specialist,Saudia
+Abdullah Al-Khalid,abdullah.al-khalid@example.com,54031279,4/27/2018,Customer Success,Software Engineer,Saudi Telecom Company
+Rayan Al-Zahrani,rayan.al-zahrani@example.com,58179034,4/24/2018,Business Development,Accountant,Saudia
+Khalid Al-Qahtan,khalid.al-qahtan@example.com,55603032,4/21/2018,Engineering,Support Specialist,Al Rajhi Bank
+Riyadh Al-Shammari,riyadh.al-shammari@example.com,59149640,4/19/2018,Product Management,Quality Assurance Engineer,SABIC
+Nawaf Al-Othman,nawaf.al-othman@example.com,59636795,4/19/2018,Sales,Customer Success Manager,Saudi Telecom Company
+Saud Al-Subaie,saud.al-subaie@example.com,57583937,04/12/2018,Human Resources,Product Manager,National Commercial Bank
+Talha Al-Rajhi,talha.al-rajhi@example.com,56540654,04/06/2018,Training,IT Specialist,SABIC
+Nasser Al-Othman,nasser.al-othman@example.com,53029557,04/01/2018,Marketing,Manager,Saudia
+Muath Al-Subaie,muath.al-subaie@example.com,54277107,3/25/2018,Product Management,Training Specialist,Saudia
+Abdulaziz Al-Shammari,abdulaziz.al-shammari@example.com,54171147,3/21/2018,Design,Product Manager,Saudi Airlines
+Khalifah Al-Mutairi,khalifah.al-mutairi@example.com,51765604,3/20/2018,Research and Development,Engineer,Saudi Ports Authority
+Bader Al-Ghamdi,bader.al-ghamdi@example.com,57173405,3/20/2018,Procurement,Assistant Manager,Saudi Telecom Company
+Adel Al-Ghamdi,adel.al-ghamdi@example.com,58118301,03/05/2018,Training,Manager,Saudi Aramco
+Yahya Al-Shammari,yahya.al-shammari@example.com,52829476,03/04/2018,Engineering,Product Manager,Saudi Electricity Company
+Saud Al-Sharif,saud.al-sharif@example.com,59620304,2/25/2018,Procurement,Legal Advisor,Al Rajhi Bank
+Saleh Al-Otaibi,saleh.al-otaibi@example.com,59991652,2/18/2018,Finance,Marketing Specialist,Saudi Telecom Company
+Abdulrahman Al-Ghamdi,abdulrahman.al-ghamdi@example.com,51785459,2/18/2018,Training,Manager,Saudia
+Bader Al-Harbi,bader.al-harbi@example.com,54526240,02/08/2018,Customer Support,Manager,SABIC
+Hamad Al-Faisal,hamad.al-faisal@example.com,55730964,02/07/2018,Procurement,HR Specialist,SABIC
+Hassan Al-Juhani,hassan.al-juhani@example.com,55941125,02/04/2018,Customer Support,Quality Assurance Engineer,National Commercial Bank
+Riyadh Al-Buhairi,riyadh.al-buhairi@example.com,56704662,02/02/2018,Design,Customer Success Manager,Saudi Telecom Company
+Mishal Al-Subaie,mishal.al-subaie@example.com,54559260,1/30/2018,Operations,Product Manager,Saudi Ports Authority
+Saud Al-Anazi,saud.al-anazi@example.com,57603618,1/26/2018,Customer Support,Engineer,National Commercial Bank
+Mazin Al-Rashid,mazin.al-rashid@example.com,58022600,1/14/2018,Legal,Senior Engineer,National Commercial Bank
+Ayman Al-Buhairi,ayman.al-buhairi@example.com,51803272,1/13/2018,Training,Senior Manager,Mobily
+Anas Al-Ghamdi,anas.al-ghamdi@example.com,56402597,12/20/2017,Design,Customer Success Manager,Saudi Aramco
+Nasser Al-Qahtan,nasser.al-qahtan@example.com,58137375,12/17/2017,Logistics,IT Specialist,Alinma Bank
+Muath Al-Harbi,muath.al-harbi@example.com,51575520,12/12/2017,Finance,Assistant Manager,Almarai
+Muath Al-Khalid,muath.al-khalid@example.com,52929671,12/11/2017,Engineering,Support Specialist,Saudi Ports Authority
+Riyadh Al-Dosari,riyadh.al-dosari@example.com,56940951,12/08/2017,Sales,Senior Manager,National Commercial Bank
+Mohammed Al-Ghamdi,mohammed.al-ghamdi@example.com,57425699,12/08/2017,Research and Development,Accountant,National Commercial Bank
+Saeed Al-Buhairi,saeed.al-buhairi@example.com,57287996,11/27/2017,Product Management,Support Specialist,Al Rajhi Bank
+Talal Al-Anazi,talal.al-anazi@example.com,55986068,11/21/2017,Business Development,Legal Advisor,Almarai
+Sultan Al-Saud,sultan.al-saud@example.com,51325493,11/12/2017,Marketing,Marketing Specialist,SABIC
+Majid Al-Khalid,majid.al-khalid@example.com,53960735,11/11/2017,Product Management,Senior Manager,Mobily
+Zaid Al-Saud,zaid.al-saud@example.com,52603853,11/09/2017,Information Technology,Marketing Specialist,Ma’aden
+Ammar Al-Qahtan,ammar.al-qahtan@example.com,59624711,10/27/2017,Design,Accountant,Ma’aden
+Saleh Al-Faisal,saleh.al-faisal@example.com,57967716,10/26/2017,Quality Assurance,Marketing Specialist,Mobily
+Abdulaziz Al-Otaibi,abdulaziz.al-otaibi@example.com,57464495,10/17/2017,Training,Senior Manager,Saudi Aramco
+Hani Al-Mutairi,hani.al-mutairi@example.com,57124691,10/13/2017,Customer Support,Marketing Specialist,Al Rajhi Bank
+Ayman Al-Mutairi,ayman.al-mutairi@example.com,52510811,10/08/2017,Information Technology,Quality Assurance Engineer,Saudi Airlines
+Talal Al-Faisal,talal.al-faisal@example.com,59178218,10/08/2017,Product Management,Legal Advisor,Almarai
+Hisham Al-Mutairi,hisham.al-mutairi@example.com,53849690,10/06/2017,Customer Support,Product Manager,Saudi Electricity Company
+Mazin Al-Rajhi,mazin.al-rajhi@example.com,59548247,9/29/2017,Quality Assurance,Procurement Specialist,Saudi Aramco
+Saleh Al-Mutairi,saleh.al-mutairi@example.com,55011310,9/21/2017,Sales,Accountant,Almarai
+Abdulaziz Al-Saud,abdulaziz.al-saud@example.com,54135289,9/18/2017,Marketing,Legal Advisor,Alinma Bank
+Saleh Al-Shammari,saleh.al-shammari@example.com,54791383,9/16/2017,Customer Support,IT Specialist,STC
+Fahad Al-Zahrani,fahad.al-zahrani@example.com,53430590,09/10/2017,Engineering,Assistant Manager,National Commercial Bank
+Omar Al-Subaie,omar.al-subaie@example.com,55325111,08/11/2017,Marketing,Support Specialist,Saudi Telecom Company
+Abdulrahman Al-Juhani,abdulrahman.al-juhani@example.com,56761863,7/21/2017,Procurement,Training Specialist,Saudi Aramco
+Khalid Al-Otaibi,khalid.al-otaibi@example.com,59633570,6/27/2017,Business Development,Senior Manager,Alinma Bank
+Nasser Al-Buhairi,nasser.al-buhairi@example.com,54856951,6/26/2017,Finance,IT Specialist,Almarai
+Turki Al-Faisal,turki.al-faisal@example.com,52056918,6/18/2017,Sales,HR Specialist,Al Rajhi Bank
+Zaid Al-Saud,zaid.al-saud@example.com,58371292,6/16/2017,Logistics,IT Specialist,STC
+Abdulaziz Al-Subaie,abdulaziz.al-subaie@example.com,58743271,06/08/2017,Quality Assurance,Business Analyst,Alinma Bank
+Jaber Al-Zahrani,jaber.al-zahrani@example.com,53533684,06/07/2017,Design,Manager,SABIC
+Mishal Al-Qahtan,mishal.al-qahtan@example.com,59676279,06/01/2017,Customer Support,HR Specialist,SABIC
+Ammar Al-Subaie,ammar.al-subaie@example.com,55825802,5/20/2017,Business Development,Product Manager,Alinma Bank
+Saif Al-Sharif,saif.al-sharif@example.com,59238506,05/02/2017,Logistics,Software Engineer,SABIC
+Saud Al-Sharif,saud.al-sharif@example.com,56879498,4/29/2017,Research and Development,Procurement Specialist,Saudi Ports Authority
+Saeed Al-Khalid,saeed.al-khalid@example.com,58272990,4/24/2017,Marketing,Training Specialist,Alinma Bank
+Nasser Al-Mutairi,nasser.al-mutairi@example.com,52685896,4/22/2017,Procurement,Senior Engineer,STC
+Anas Al-Mutairi,anas.al-mutairi@example.com,52822316,4/14/2017,Operations,HR Specialist,Saudi Aramco
+Khalifah Al-Juhani,khalifah.al-juhani@example.com,55763778,04/09/2017,Operations,Sales Representative,Saudi Electricity Company
+Hisham Al-Dosari,hisham.al-dosari@example.com,51759954,04/01/2017,Sales,Engineer,Saudi Electricity Company
+Mazin Al-Asmari,mazin.al-asmari@example.com,52403625,3/27/2017,Quality Assurance,IT Specialist,Saudi Telecom Company
+Fahad Al-Faisal,fahad.al-faisal@example.com,52821735,3/24/2017,Training,Business Analyst,Saudi Ports Authority
+Anas Al-Asmari,anas.al-asmari@example.com,55144310,3/22/2017,Product Management,Manager,Saudi Telecom Company
+Khalid Al-Subaie,khalid.al-subaie@example.com,58724185,3/21/2017,Training,Manager,Saudi Airlines
+Mazin Al-Faisal,mazin.al-faisal@example.com,52576466,3/15/2017,Product Management,Business Analyst,SABIC
+Saleh Al-Asmari,saleh.al-asmari@example.com,54060806,03/08/2017,Operations,Operations Specialist,Al Rajhi Bank
+Bader Al-Asmari,bader.al-asmari@example.com,51775014,03/06/2017,Legal,Accountant,Alinma Bank
+Khalifah Al-Othman,khalifah.al-othman@example.com,59080903,03/06/2017,Business Development,HR Specialist,Almarai
+Zaid Al-Saud,zaid.al-saud@example.com,53060509,03/05/2017,Legal,Marketing Specialist,Ma’aden
+Rayan Al-Sharif,rayan.al-sharif@example.com,56316214,2/23/2017,Design,Training Specialist,National Commercial Bank
+Nasser Al-Rajhi,nasser.al-rajhi@example.com,52218893,2/17/2017,Sales,Operations Specialist,Saudi Ports Authority
+Muath Al-Zahrani,muath.al-zahrani@example.com,56404079,02/07/2017,Design,Sales Representative,SABIC
+Hisham Al-Sharif,hisham.al-sharif@example.com,57004051,1/25/2017,Legal,Software Engineer,Alinma Bank
+Hamad Al-Qahtan,hamad.al-qahtan@example.com,59527996,1/23/2017,Business Development,Accountant,Saudia
+Bader Al-Shammari,bader.al-shammari@example.com,58057184,1/20/2017,Business Development,Operations Specialist,SABIC
+Rayan Al-Asmari,rayan.al-asmari@example.com,57004128,1/17/2017,Customer Support,Engineer,Saudi Airlines
+Majid Al-Dosari,majid.al-dosari@example.com,51707557,1/16/2017,Procurement,Product Manager,National Commercial Bank
+Ayman Al-Rajhi,ayman.al-rajhi@example.com,57502092,1/13/2017,Customer Success,Senior Manager,Saudi Aramco
+Saleh Al-Zahrani,saleh.al-zahrani@example.com,59850268,01/11/2017,Quality Assurance,Legal Advisor,Al Rajhi Bank
+Abdulrahman Al-Zahrani,abdulrahman.al-zahrani@example.com,59003944,01/04/2017,Customer Success,Product Manager,Saudi Aramco
+Hisham Al-Harbi,hisham.al-harbi@example.com,54964791,01/03/2017,Procurement,Manager,Almarai
+Yousef Al-Rajhi,yousef.al-rajhi@example.com,56273520,12/26/2016,Human Resources,Customer Success Manager,Saudia
+Khalid Al-Ghamdi,khalid.al-ghamdi@example.com,58144821,12/11/2016,Training,Quality Assurance Engineer,Alinma Bank
+Saif Al-Shammari,saif.al-shammari@example.com,59573120,12/02/2016,Engineering,Operations Specialist,STC
+Nawaf Al-Faisal,nawaf.al-faisal@example.com,53867590,11/28/2016,Procurement,Manager,National Commercial Bank
+Abdulaziz Al-Anazi,abdulaziz.al-anazi@example.com,54713725,11/14/2016,Research and Development,IT Specialist,Saudi Telecom Company
+Talha Al-Harbi,talha.al-harbi@example.com,57819436,11/05/2016,Design,Accountant,Ma’aden
+Talal Al-Juhani,talal.al-juhani@example.com,56927210,10/24/2016,Operations,Marketing Specialist,Saudi Airlines
+Jaber Al-Mutairi,jaber.al-mutairi@example.com,52811825,10/24/2016,Research and Development,Senior Engineer,Alinma Bank
+Nawaf Al-Ghamdi,nawaf.al-ghamdi@example.com,51853043,9/28/2016,Sales,Operations Specialist,Saudi Ports Authority
+Abdulaziz Al-Faisal,abdulaziz.al-faisal@example.com,56706945,9/13/2016,Information Technology,Engineer,Saudi Airlines
+Riyadh Al-Qahtani,riyadh.al-qahtani@example.com,52958959,09/12/2016,Human Resources,Legal Advisor,Almarai
+Khalifah Al-Anazi,khalifah.al-anazi@example.com,52790159,09/03/2016,Sales,Sales Representative,Saudi Aramco
+Hisham Al-Shammari,hisham.al-shammari@example.com,51348397,09/02/2016,Research and Development,Quality Assurance Engineer,STC
+Yahya Al-Zahrani,yahya.al-zahrani@example.com,55080948,8/26/2016,Logistics,Senior Manager,Saudi Telecom Company
+Bader Al-Otaibi,bader.al-otaibi@example.com,56358449,8/16/2016,Sales,Support Specialist,Saudi Ports Authority
+Ammar Al-Khalid,ammar.al-khalid@example.com,53191720,08/10/2016,Product Management,Operations Specialist,Alinma Bank
+Yahya Al-Subaie,yahya.al-subaie@example.com,57991653,08/03/2016,Training,IT Specialist,Saudia
+Turki Al-Harbi,turki.al-harbi@example.com,59592010,6/30/2016,Design,Senior Manager,Saudi Aramco
+Abdullah Al-Zahrani,abdullah.al-zahrani@example.com,53718457,6/30/2016,Engineering,Product Manager,Alinma Bank
+Hisham Al-Qahtan,hisham.al-qahtan@example.com,59615020,6/28/2016,Research and Development,Business Analyst,SABIC
+Yahya Al-Rashid,yahya.al-rashid@example.com,52163110,6/15/2016,Design,Quality Assurance Engineer,Ma’aden
+Ayman Al-Anazi,ayman.al-anazi@example.com,54328314,5/24/2016,Product Management,Marketing Specialist,Al Rajhi Bank
+Ayman Al-Sharif,ayman.al-sharif@example.com,59622277,5/19/2016,Legal,Training Specialist,SABIC
+Saleh Al-Juhani,saleh.al-juhani@example.com,59597774,4/30/2016,Logistics,Quality Assurance Engineer,Saudi Telecom Company
+Mansour Al-Harbi,mansour.al-harbi@example.com,52489097,4/25/2016,Quality Assurance,Support Specialist,Mobily
+Talal Al-Anazi,talal.al-anazi@example.com,58570357,4/21/2016,Design,Sales Representative,STC
+Sultan Al-Mutairi,sultan.al-mutairi@example.com,57195381,4/15/2016,Logistics,Marketing Specialist,Al Rajhi Bank
+Mohammed Al-Dosari,mohammed.al-dosari@example.com,56437243,4/14/2016,Engineering,Senior Manager,STC
+Hassan Al-Anazi,hassan.al-anazi@example.com,55424133,3/21/2016,Training,Marketing Specialist,SABIC
+Hani Al-Otaibi,hani.al-otaibi@example.com,54220923,03/11/2016,Customer Support,Engineer,SABIC
+Saif Al-Otaibi,saif.al-otaibi@example.com,53654364,03/04/2016,Marketing,Engineer,Saudi Aramco
+Jaber Al-Harbi,jaber.al-harbi@example.com,52031481,2/28/2016,Finance,Senior Engineer,Almarai
+Rayan Al-Mutairi,rayan.al-mutairi@example.com,55035023,2/16/2016,Design,Sales Representative,National Commercial Bank
+Jaber Al-Qahtani,jaber.al-qahtani@example.com,51488800,1/30/2016,Design,Marketing Specialist,National Commercial Bank
+Nasser Al-Mutairi,nasser.al-mutairi@example.com,57418109,1/21/2016,Logistics,Customer Success Manager,Saudi Electricity Company
+Bader Al-Zahrani,bader.al-zahrani@example.com,52630985,1/18/2016,Human Resources,Senior Manager,Saudi Electricity Company
+Talal Al-Otaibi,talal.al-otaibi@example.com,57403442,01/12/2016,Marketing,Sales Representative,Saudi Ports Authority
+Abdulrahman Al-Dosari,abdulrahman.al-dosari@example.com,59970132,12/27/2015,Legal,Senior Manager,Almarai
+Rashed Al-Harbi,rashed.al-harbi@example.com,59415497,12/21/2015,Research and Development,Procurement Specialist,Almarai
+Adel Al-Qahtan,adel.al-qahtan@example.com,58021664,12/06/2015,Finance,Operations Specialist,Almarai
+Hani Al-Ghamdi,hani.al-ghamdi@example.com,55607971,11/29/2015,Quality Assurance,Quality Assurance Engineer,Saudia
+Omar Al-Zahrani,omar.al-zahrani@example.com,52691134,11/28/2015,Operations,Quality Assurance Engineer,Saudi Electricity Company
+Ammar Al-Shammari,ammar.al-shammari@example.com,59259897,11/22/2015,Research and Development,Marketing Specialist,SABIC
+Hamad Al-Asmari,hamad.al-asmari@example.com,58664146,11/17/2015,Engineering,Customer Success Manager,SABIC
+Saud Al-Juhani,saud.al-juhani@example.com,59330119,11/16/2015,Marketing,Senior Manager,STC
+Nasser Al-Zahrani,nasser.al-zahrani@example.com,58906097,11/15/2015,Customer Support,Marketing Specialist,Saudi Aramco
+Abdulrahman Al-Shammari,abdulrahman.al-shammari@example.com,58069756,11/11/2015,Marketing,Manager,Saudi Telecom Company
+Mohammed Al-Otaibi,mohammed.al-otaibi@example.com,54477160,11/11/2015,Human Resources,Business Analyst,Alinma Bank
+Nasser Al-Ghamdi,nasser.al-ghamdi@example.com,59895359,11/07/2015,Marketing,Customer Success Manager,Almarai
+Mohammed Al-Harbi,mohammed.al-harbi@example.com,58801759,11/06/2015,Research and Development,Manager,Saudi Airlines
+Jaber Al-Othman,jaber.al-othman@example.com,53225371,10/19/2015,Finance,Training Specialist,Alinma Bank
+Faisal Al-Othman,faisal.al-othman@example.com,58807750,9/30/2015,Quality Assurance,Quality Assurance Engineer,SABIC
+Saif Al-Subaie,saif.al-subaie@example.com,55303187,9/23/2015,Legal,Product Manager,Almarai
+Omar Al-Khalid,omar.al-khalid@example.com,54669206,09/12/2015,Quality Assurance,Support Specialist,Almarai
+Talal Al-Subaie,talal.al-subaie@example.com,54259215,09/10/2015,Business Development,HR Specialist,Saudia
+Turki Al-Otaibi,turki.al-otaibi@example.com,59423588,8/25/2015,Procurement,Manager,Almarai
+Saif Al-Anazi,saif.al-anazi@example.com,58272530,8/21/2015,Customer Support,Support Specialist,Al Rajhi Bank
+Nasser Al-Saud,nasser.al-saud@example.com,55481701,8/17/2015,Marketing,Product Manager,SABIC
+Mazin Al-Sharif,mazin.al-sharif@example.com,58325205,8/17/2015,Customer Support,Software Engineer,Saudi Airlines
+Adel Al-Dosari,adel.al-dosari@example.com,59116447,8/16/2015,Training,Senior Manager,Saudi Ports Authority
+Bader Al-Anazi,bader.al-anazi@example.com,55843431,8/14/2015,Quality Assurance,Support Specialist,Saudi Electricity Company
+Talal Al-Rajhi,talal.al-rajhi@example.com,51789815,08/09/2015,Customer Success,Legal Advisor,Al Rajhi Bank
+Fahad Al-Shammari,fahad.al-shammari@example.com,53675646,7/21/2015,Human Resources,Accountant,Saudi Aramco
+Khalifah Al-Qahtani,khalifah.al-qahtani@example.com,55416255,7/20/2015,Logistics,Procurement Specialist,Saudi Electricity Company
+Talha Al-Subaie,talha.al-subaie@example.com,59488555,7/15/2015,Product Management,Engineer,Ma’aden
+Abdulaziz Al-Faisal,abdulaziz.al-faisal@example.com,58994382,07/10/2015,Research and Development,IT Specialist,Saudia
+Khalifah Al-Juhani,khalifah.al-juhani@example.com,54291558,07/04/2015,Information Technology,Senior Manager,National Commercial Bank
+Fahad Al-Juhani,fahad.al-juhani@example.com,51679212,6/29/2015,Sales,Assistant Manager,SABIC
+Mishal Al-Qahtani,mishal.al-qahtani@example.com,57920407,6/22/2015,Product Management,Quality Assurance Engineer,National Commercial Bank
+Hassan Al-Dosari,hassan.al-dosari@example.com,59874915,06/12/2015,Training,Quality Assurance Engineer,Saudi Aramco
+Nasser Al-Rashid,nasser.al-rashid@example.com,56664219,06/06/2015,Logistics,IT Specialist,Alinma Bank
