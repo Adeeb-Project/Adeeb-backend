@@ -26,7 +26,7 @@ public class SurveysService
 
     public async Task<ServiceResult<IEnumerable<SurveyDto>>> GetSurveys(int companyId)
     {
-        var surveys = await _context.Surveys.Include(e => e.Questions).Where(t => t.CompanyId == companyId).Select(s => new SurveyDto
+        var surveys = await _context.Surveys.Include(e => e.Questions).ThenInclude(q => q.Options).Where(t => t.CompanyId == companyId).Select(s => new SurveyDto
         {
             SurveyId = s.Id,
             Title = s.Title,
@@ -35,9 +35,13 @@ public class SurveysService
             {
                 Id = q.Id,
                 Text = q.Text,
-                QuestionType = q.QuestionType
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options.Select(o => o.OptionText).ToList()
+        : null
             }).ToList()
         }).ToListAsync();
+
         return ServiceResult<IEnumerable<SurveyDto>>.Ok(surveys);
     }
 
@@ -92,7 +96,7 @@ public class SurveysService
 
 
 
-    public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto, int userId, int companyId)
+    /* public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(AssignSurveyForEmployeeRequestDto requestDto, int userId, int companyId)
     {
         //just checking first before anything if the surveyId and employeeId actuaclly exist
         var employeeExists = await _context.Employees.AnyAsync(e => e.Id == requestDto.EmployeeId);
@@ -144,11 +148,70 @@ public class SurveysService
         var company = await _context.Companies.FindAsync(employee.CompanyId);
 
         // Send email to the employee
-        _twilioEmailService.SendEmailAsync(
-            employee.Email,
-            "Survey Assignment | استبيان الخروج",
-            $@"
-Dear {employee.FullName},
+
+
+        return ServiceResult<EmptyResult>.Created();
+    } */
+
+    public async Task<ServiceResult<EmptyResult>> AssignSurveyForEmployee(
+            AssignSurveyForEmployeeRequestDto requestDto,
+            int userId,
+            int companyId)
+    {
+        // Validate survey ownership
+        var surveyExists = await _context.Surveys
+            .AnyAsync(s => s.Id == requestDto.SurveyId && s.CompanyId == companyId);
+        if (!surveyExists)
+            return ServiceResult<EmptyResult>.BadRequest("Invalid SurveyId or access denied.");
+
+        // Load employees in one query
+        var employees = await _context.Employees
+            .Where(e => requestDto.EmployeeId.Contains(e.Id))
+            .ToListAsync();
+
+        // Validate employee IDs
+        var invalidIds = requestDto.EmployeeId.Except(employees.Select(e => e.Id)).ToList();
+        if (invalidIds.Any())
+            return ServiceResult<EmptyResult>
+                .BadRequest($"Employee IDs not found: {string.Join(", ", invalidIds)}.");
+
+        // Validate company match
+        if (employees.Any(e => e.CompanyId != companyId))
+            return ServiceResult<EmptyResult>
+                .BadRequest("One or more employees are not in your company.");
+
+        // Skip already assigned
+        var already = await _context.EmployeeSurveyLinks
+            .Where(link => link.SurveyId == requestDto.SurveyId
+                           && requestDto.EmployeeId.Contains(link.EmployeeId))
+            .Select(link => link.EmployeeId)
+            .ToListAsync();
+        if (already.Any())
+            return ServiceResult<EmptyResult>
+                .BadRequest($"Survey already assigned to employee(s): {string.Join(", ", already)}.");
+
+        // Create assignments and send emails
+        var domainName = _configuration["AppSettings:DomainName"];
+        var newLinks = new List<EmployeeSurveyLink>();
+        var company = await _context.Companies.FindAsync(companyId);
+
+        foreach (var emp in employees)
+        {
+            var uniqueLink = $"{domainName}/survey/{emp.Id}";
+            newLinks.Add(new EmployeeSurveyLink
+            {
+                EmployeeId = emp.Id,
+                SurveyId = requestDto.SurveyId,
+                UniqueLink = uniqueLink,
+                SentAt = DateTime.UtcNow,
+                IsCompleted = false
+            });
+
+            _twilioEmailService.SendEmailAsync(
+         emp.Email,
+         "Survey Assignment | استبيان الخروج",
+         $@"
+Dear {emp.FullName},
 
 We hope this email finds you well. As part of our commitment to continuous improvement, we invite you to participate in an **anonymous exit survey** about your experience at **{company.Name}**.
 
@@ -166,7 +229,7 @@ Best regards,
 
 ---
   
-عزيزي/عزيزتي {employee.FullName}،
+عزيزي/عزيزتي {emp.FullName}،
 
 نأمل أن تصلك هذه الرسالة وأنت بخير. كجزء من التزامنا بالتحسين المستمر، ندعوك للمشاركة في **استبيان خروج مجهول الهوية** حول تجربتك في **{company.Name}**.
 
@@ -182,7 +245,11 @@ Best regards,
 تحياتنا،  
 {company.Name}
 "
-        );
+     );
+        }
+
+        _context.EmployeeSurveyLinks.AddRange(newLinks);
+        await _context.SaveChangesAsync();
 
         return ServiceResult<EmptyResult>.Created();
     }
@@ -195,11 +262,14 @@ Best regards,
             CreatedAt = DateTime.UtcNow,
             ExpiryDate = surveyDto.ExpiryDate,
             CompanyId = companyId,
-            Questions = surveyDto.Questions?.Select(q => new Question
+            Questions = surveyDto.Questions.Select(q => new Question
             {
                 Text = q.Text,
-                QuestionType = q.QuestionType
-            }).ToList() ?? new List<Question>()
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+         ? q.Options?.Select(opt => new QuestionMcqOption { OptionText = opt }).ToList()
+         : null
+            }).ToList()
         };
 
         _context.Surveys.Add(newSurvey);
@@ -225,7 +295,7 @@ Best regards,
     {
         var assignment = await _context.EmployeeSurveyLinks
             .Include(e => e.Survey)
-            .ThenInclude(s => s.Questions)
+            .ThenInclude(s => s.Questions).ThenInclude(q => q.Options)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
 
@@ -247,8 +317,12 @@ Best regards,
             {
                 Id = q.Id,
                 Text = q.Text,
-                QuestionType = q.QuestionType
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options.Select(o => o.OptionText).ToList()
+        : null
             }).ToList()
+
         };
 
         return ServiceResult<SurveyDto>.Ok(surveyDto);
@@ -258,7 +332,7 @@ Best regards,
     {
         var assignment = await _context.EmployeeSurveyLinks
             .Include(e => e.Survey)
-            .ThenInclude(s => s.Questions)
+            .ThenInclude(s => s.Questions).ThenInclude(q => q.Options)
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId && !e.IsCompleted);
 
         if (assignment == null)
@@ -284,29 +358,123 @@ Best regards,
         _context.SurveyResponses.Add(surveyResponse);
         await _context.SaveChangesAsync();
 
-        foreach (var questionDto in surveyDto.QuestionsAnswers)
+        foreach (var qa in surveyDto.QuestionsAnswers)
         {
-            var question = await _context.Questions.FindAsync(questionDto.QuestionId);
+            var question = await _context.Questions
+                .Include(q => q.Options)
+                .FirstOrDefaultAsync(q => q.Id == qa.QuestionId);
+
             if (question == null || question.SurveyId != survey.Id)
+                return ServiceResult<string>.BadRequest($"Invalid question ID: {qa.QuestionId}");
+
+            if (question.QuestionType == QuestionType.MultipleChoiceQuestion)
             {
-                return ServiceResult<string>.BadRequest($"Invalid question ID: {questionDto.QuestionId}");
+                // If using text:
+                if (!question.Options.Any(o => o.OptionText == qa.Answer))
+                    return ServiceResult<string>.BadRequest($"Invalid option for question {qa.QuestionId}");
+
+                // —OR— if using ID:
+                // if (!question.Options.Any(o => o.Id == qa.AnswerOptionId))
+                //     return ServiceResult<string>.BadRequest($"Invalid option for question {qa.QuestionId}");
             }
 
-            var response = new QuestionResponse
+            _context.QuestionResponses.Add(new QuestionResponse
             {
                 QuestionId = question.Id,
-                Answer = questionDto.Answer,
+                Answer = qa.Answer,               // or store AnswerOptionId in a separate column
                 SurveyResponseId = surveyResponse.Id
-            };
-
-            _context.QuestionResponses.Add(response);
+            });
         }
+
 
         assignment.IsCompleted = true;
         await _context.SaveChangesAsync();
 
         return ServiceResult<string>.Ok("Survey submitted successfully.");
     }
+
+
+    public async Task<ServiceResult<SurveyDto>> UpdateSurveyAsync(SurveyDto surveyDto, int userId, int companyId)
+    {
+        var existingSurvey = await _context.Surveys
+            .Include(s => s.Questions)
+            .FirstOrDefaultAsync(s => s.Id == surveyDto.SurveyId && s.CompanyId == companyId);
+
+        if (existingSurvey == null)
+            return ServiceResult<SurveyDto>.BadRequest("Survey not found or access denied.");
+
+        // Update survey fields
+        existingSurvey.Title = surveyDto.Title;
+        existingSurvey.Description = surveyDto.Description;
+        existingSurvey.ExpiryDate = surveyDto.ExpiryDate;
+
+        // Remove old questions
+        // Note: This will also remove the options associated with the questions
+        var allOptions = existingSurvey.Questions.SelectMany(q => q.Options).ToList();
+        _context.QuestionMcqOptions.RemoveRange(allOptions);
+        _context.Questions.RemoveRange(existingSurvey.Questions);
+
+
+        // Add new questions
+        existingSurvey.Questions = surveyDto.Questions.Select(q => new Question
+        {
+            Text = q.Text,
+            QuestionType = q.QuestionType,
+            Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+        ? q.Options?.Select(opt => new QuestionMcqOption { OptionText = opt }).ToList()
+        : null
+        }).ToList();
+
+
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<SurveyDto>.Ok(new SurveyDto
+        {
+            SurveyId = existingSurvey.Id,
+            Title = existingSurvey.Title,
+            Description = existingSurvey.Description,
+            ExpiryDate = existingSurvey.ExpiryDate,
+            Questions = existingSurvey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType
+            }).ToList()
+        });
+    }
+
+    public async Task<ServiceResult<SurveyDto>> GetSurveyByIdAsync(int surveyId, int companyId)
+    {
+        var survey = await _context.Surveys
+            .Include(s => s.Questions).ThenInclude(q => q.Options)
+
+            .FirstOrDefaultAsync(s => s.Id == surveyId && s.CompanyId == companyId);
+
+        if (survey == null)
+            return ServiceResult<SurveyDto>.BadRequest("Survey not found or access denied.");
+
+        var dto = new SurveyDto
+        {
+            SurveyId = survey.Id,
+            Title = survey.Title,
+            Description = survey.Description,
+            ExpiryDate = survey.ExpiryDate,
+            Questions = survey.Questions.Select(q => new QuestionDto
+            {
+                Id = q.Id,
+                Text = q.Text,
+                QuestionType = q.QuestionType,
+                Options = q.QuestionType == QuestionType.MultipleChoiceQuestion
+         ? q.Options.Select(o => o.OptionText).ToList()
+         : null
+            }).ToList()
+
+        };
+
+        return ServiceResult<SurveyDto>.Ok(dto);
+    }
+
+
 
 
 
